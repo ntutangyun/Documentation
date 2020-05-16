@@ -19,7 +19,8 @@ Using Python API requires Python version 3.5 or later.
 
 ## Quickstart [[top]] {: #quickstart data-toc-label='Quickstart'}
 
-Python API is available in separate repository: https://github.com/lgsvl/PythonAPI
+Python API is available in separate repository: [https://github.com/lgsvl/PythonAPI](https://github.com/lgsvl/PythonAPI)
+
 After cloning or downloading it from the git repository follow these steps:
 
 1. Run the following command to install Python files and necessary dependencies:
