@@ -3,7 +3,7 @@
 A `Map` can be in the following states. 
 
 - A `Map` with a local URL or if it has already been downloaded will have a `Valid` status.
-- If the URL to the `Map` assetbundle is not local and the assetbundle is not in the local database, then the vehicle needs to be downloaded.
+- If the URL to the `Map` assetbundle is not local and the assetbundle is not in the local database, then the map needs to be downloaded.
 Currently only 1 assetbundle is downloaded at a time. 
 	- If an assetbundle is downloading, the `Map` will show a GREY dot and the status will be `Downloading` with the download percentage.
 	- If another assetbundle is downloading, the icon will be ORANGE and the status will be `Downloading` without a percentage.
