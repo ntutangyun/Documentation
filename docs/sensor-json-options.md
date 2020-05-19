@@ -788,6 +788,7 @@ This sensor outputs control calibration criteria collected by AD Stacks (Apollo,
 }
 ```
 
+[Total Control Calibration Criteria:](./total-control-calibration-criteria.md)
 
 ### Transform Sensor [[top]] {: #transform-sensor data-toc-label='Transform Sensor'}
 This sensor is specifically used to parent other sensors.
@@ -864,4 +865,36 @@ Example usage
 }
 ```
 
-[Total Control Calibration Criteria:](./total-control-calibration-criteria.md)
+### Signal Sensor [[top]] {: #signal-sensor data-toc-label='Signal Sensor'}
+This sensor returns ground truth data for traffic light signals connected to the current lane of ego vehicle and creates bounding boxes around the detected signals. The color of the bounding box corresponds to the signal's type:
+
+|Bounding Box|Signal|
+|:-:|:-:|
+|Green|Green|
+|Yellow|Yellow|
+|Red|Red|
+
+|Parameter|Description|Unit|Type|Default Value|Minimum|Maximum|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|`Frequency`|defines the maximum rate that messages will be published|Hertz|Float|10|1|100|
+|`MaxDistance`|defines how close a traffic light must be to the sensor to be detected|meters|Float|100|1|1000|
+
+```JSON
+{
+    "type": "Signal",
+    "name": "Signal Sensor",
+    "params": {
+      "Frequency": 10,
+      "MaxDistance": 100,
+      "Topic": "/simulator/ground_truth/signals"
+    },
+    "transform": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "pitch": 0,
+      "yaw": 0,
+      "roll": 0
+    }
+}
+```
