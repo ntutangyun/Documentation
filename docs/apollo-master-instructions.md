@@ -1,7 +1,6 @@
-# Running Apollo 5.0 with LGSVL Simulator [](#top)
-This repository is a fork of [Apollo](https://github.com/ApolloAuto/apollo) maintained by the LG Electronics Silicon Valley Lab which has modified and configured to facilitate use with [LG's Automotive Simulator](https://github.com/lgsvl/simulator).
+# Running latest Apollo with LGSVL Simulator [](#top)
 
-**The software and source code in this repository are intended only for use with LG Automotive Simulator and *should not* be used in a real vehicle.**
+This instruction is tested after [the last commit](https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5) enabling LGSVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed.
 
 [![](images/apollo-sim.png)](images/full_size_images/apollo-sim.png)
 
@@ -12,12 +11,9 @@ This repository is a fork of [Apollo](https://github.com/ApolloAuto/apollo) main
 The guide outlines the steps required to setup Apollo for use with the LGSVL Simulator. If you have not already set up the simulator, please do so first by following the instructions [here](https://github.com/lgsvl/simulator).
 
 ## Prerequisites [[top]] {: #prerequisites data-toc-label='Prerequisites'}
-* Linux operating system (preferably Ubuntu 14.04 or later)
+* Ubuntu 16.04 or later (Ubuntu 18.04 is preferred)
 * Nvidia graphics card (required for Perception)
-    - Nvidia proprietary driver must be installed
-    - The current version of Apollo does not support Volta and Turing architectures (this includes Titan V and RTX 2080 GPUs).
-
-
+    - Nvidia proprietary driver (\>=410.48) must be installed
 
 ## Setup [[top]] {: #setup data-toc-label='Setup'}
 
@@ -26,7 +22,6 @@ Apollo is designed to run out of docker containers. The image will mount this re
 
 #### Installing Docker CE [[top]] {: #installing-docker-ce data-toc-label='Installing Docker CE'}
 To install Docker CE please refer to the [official documentation](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
-
 
 **NOTE** 
 Apollo does not work if the docker is started with `sudo`.
@@ -38,48 +33,41 @@ Before installing nvidia-docker make sure that you have an appropriate Nvidia dr
 To test if nvidia drivers are properly installed enter `nvidia-smi` in a terminal. If the drivers are installed properly an output similar to the following should appear.
 
 ```
-    +-----------------------------------------------------------------------------+
-    | NVIDIA-SMI 390.87                 Driver Version: 390.87                    |
+	+-----------------------------------------------------------------------------+
+    | NVIDIA-SMI 440.64       Driver Version: 440.64       CUDA Version: 10.2     |
     |-------------------------------+----------------------+----------------------+
     | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
     | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
     |===============================+======================+======================|
-    |   0  GeForce GTX 108...  Off  | 00000000:65:00.0  On |                  N/A |
-    |  0%   59C    P5    22W / 250W |   1490MiB / 11175MiB |      4%      Default |
+    |   0  GeForce GTX 1080    Off  | 00000000:01:00.0  On |                  N/A |
+    | 27%   29C    P8     7W / 180W |    579MiB /  8117MiB |      1%      Default |
     +-------------------------------+----------------------+----------------------+
-                                                                                
-    +-----------------------------------------------------------------------------+
+                                                                                   
+    +-----------------------------------------------------------------------------+    
     | Processes:                                                       GPU Memory |
     |  GPU       PID   Type   Process name                             Usage      |
     |=============================================================================|
-    |    0      1187      G   /usr/lib/xorg/Xorg                           863MiB |
-    |    0      3816      G   /usr/bin/gnome-shell                         305MiB |
-    |    0      4161      G   ...-token=7171B24E50C2F2C595566F55F1E4D257    68MiB |
-    |    0      4480      G   ...quest-channel-token=3330599186510203656   147MiB |
-    |    0     17936      G   ...-token=5299D28BAAD9F3087B25687A764851BB   103MiB |
+    |    0      1745      G   /usr/lib/xorg/Xorg                            40MiB |
+    |    0      1862      G   /usr/bin/gnome-shell                          49MiB |
+    |    0      4409      G   /usr/lib/xorg/Xorg                           223MiB |
+    |    0      4545      G   /usr/bin/gnome-shell                         140MiB |
+    |    0      4962      G   ...uest-channel-token=10798087356903621100    27MiB |
+    |    0      9570      G   /proc/self/exe                                50MiB |
+    |    0     17619      G   ...uest-channel-token=14399957398263092148    40MiB |
     +-----------------------------------------------------------------------------+
 ```
 
 The installation steps for nvidia-docker are available at the [official repo](https://github.com/NVIDIA/nvidia-docker). 
 
-#### Pulling LGSVL Docker image [[top]] {: #pulling-lgsvl-docker-image data-toc-label='Pulling LGSVL Docker image'}
-LGSVL maintains a docker image to be used alongside this repository. The docker image is available [here](https://hub.docker.com/r/lgsvl/apollo-5.0/).
-
-To pull the image use the following command:
-
-```bash
-docker pull lgsvl/apollo-5.0
-```
-
 ### Cloning the Repository [[top]] {: #cloning-the-repository data-toc-label='Cloning the Repository'}
-This repository includes a couple of submodules for HD Maps and lgsvl msgs. To make sure that the submodules are also cloned use the following command:
+Clone latest Apollo using the following command:
 
 ```bash
-git clone --recurse-submodules https://github.com/lgsvl/apollo-5.0.git
+git clone https://github.com/ApolloAuto/apollo
 ```
 
 ### Building Apollo and bridge [[top]] {: #building-apollo-and-bridge data-toc-label='Building Apollo and bridge'}
-Now everything should be in place to build apollo. Apollo must be built from the container. To launch the container navigate to the directory where the repository was cloned and enter:
+Now everything should be in place to build Apollo. Apollo must be built from the container. To launch the container navigate to the directory where the repository was cloned and enter:
 
 ```bash
 ./docker/scripts/dev_start.sh
@@ -99,6 +87,17 @@ Build Apollo:
 ./apollo.sh build_gpu
 ```
 
+**NOTE** 
+Apollo build may fail on machines with (for example) 16GB or less of RAM, depending on the number of cores due to aggressive parallelization in the build as discussed in [Apollo issue 7719](https://github.com/ApolloAuto/apollo/issues/7719).
+
+If the build fails, either re-start it until it succeeds, or try changing line 141 of `function build()` in `apollo.sh` as follows:
+
+Replace this:
+   `JOB_ARG="--jobs=$(nproc) --ram_utilization_factor 80"`
+
+With this, which will use all but two cores for the build:
+   `JOB_ARG="--jobs=$(expr $(nproc) - 2 ) --ram_utilization_factor 70"`
+
 ## Launching Apollo alongside the Simulator [[top]] {: #launching-apollo-alongide-the-simulator data-toc-label='Launching Apollo alongisde the Simulator'}
 
 [![](images/xe-simulator.png)](images/full_size_images/xe-simulator.png)
@@ -112,13 +111,13 @@ To launch apollo, first launch and enter a container as described in the previou
     Note: you may receive errors about dreamview not being build if you do not run the script from the `/apollo` directory.
 
 ```bash
-bootstrap.sh
+./scripts/bootstrap_lgsvl.sh
 ```
 
 * Launch bridge (inside docker container):
 
 ```bash
-bridge.sh
+./scripts/bridge.sh
 ```
 
 * Run the LG SVL Simulator outside of docker. See instructions in the [simulator repository](https://github.com/lgsvl/simulator)
@@ -129,18 +128,19 @@ bridge.sh
     - Submit the Simulation
     - Select the created Simulation and click "Play"
 
-[![](images/apollo5-0.png)](images/full_size_images/apollo5-0.png)
+[![](images/apollo-master.png)](images/full_size_images/apollo-master.png)
 
 
-* Open Apollo dreamview in a browser by navigating to: `localhost:8888`
-    - Select the `Lincoln2017MKZ` vehicle and `BorregasAve` map in the top right corner.
+* Open Apollo Dreamview in a browser by navigating to: `localhost:8888`
+    - NEW for Apollo Master: Select the `Mkz Lgsvl` setup mode, from the menu to the left of the vehicle menu.
+    - Select the `Lincoln2017MKZ LGSVL` vehicle and `Borregas Ave` map in the top right corner.
     - Open the **Module Controller** tap (on the left bar).
     - Enable **Localization**, **Transform**, **Perception**, **Traffic Light**, **Planning**, **Prediction**, **Routing**, and **Control**.
     - Navigate to the **Route Editing** tab.
     - Select a destination by clicking on a lane line and clicking **Submit Route**.
     - Watch the vehicle navigate to the destination.
-    - To stop the docker container run the `dev_start.sh stop` script in `apollo/docker/scripts` in a new terminal (not in the docker container).
-
+- To stop the docker container run the `dev_start.sh stop` script in `apollo/docker/scripts` in a new terminal (not in the docker container).
+    
 * If you are using ufw, it is easiest to completely disable the firewall to allow connections `sudo ufw disable`
     - If that is not possible, add the following rules:
         - These are required even if running the simulator and Apollo on the same machine
@@ -148,14 +148,18 @@ bridge.sh
         - `sudo ufw allow 9090`
 
 ### Adding a Vehicle <sub><sup>[top](#top)</sup></sub> {: #adding-a-vehicle data-toc-label='Adding a Vehicle'}
-The default vehicles have their calibration files included in the [LGSVL Branch of Apollo 5.0](https://github.com/lgsvl/apollo-5.0/).
+Only calibration files for Lincoln 2017 MKZ is included in the latest Apollo at this time. More calibration files map be added later.
 
 ### Adding an HD Map [[top]] {: #adding-an-hd-map data-toc-label='Adding an HD Map'}
-The default maps have their HD map files included in the [LGSVL Branch of Apollo 5.0](https://github.com/lgsvl/apollo-5.0/).
+Only HD map files for Borregas Ave is included in the the latest Apollo at this time. More HD maps may be added later. 
+
+You can also download additional maps from [here](https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/map/data), and manually add them to `/apollo/modules/map/data/`. 
+
+Or you can export your own map from our [map annotation tool](https://www.lgsvlsimulator.com/docs/map-annotation/#export-map-annotations), name it `base_map.bin` and then generate `routing_map` and `sim_map` following [these instructions](https://github.com/ApolloAuto/apollo/tree/master/modules/map/data#difference-between-base_map-routing_map-and-sim_map).
 
 
 ##  Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.

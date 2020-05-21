@@ -9,7 +9,7 @@ This repository is a fork of [Apollo](https://github.com/ApolloAuto/apollo) main
 [TOC]
 
 ## Getting Started [[top]] {: #getting-started data-toc-label='Getting Started'}
-The guide outlines the steps required to setup Apollo for use with the LG Automotive Simulator. If you have not already set up the simulator, please do so first by following the instructions [here](https://github.com/lgsvl/simulator).
+The guide outlines the steps required to setup Apollo for use with the LGSVL Simulator. If you have not already set up the simulator, please do so first by following the instructions [here](https://github.com/lgsvl/simulator).
 
 We use our forked version of the Apollo repository, which can be found [here](https://github.com/lgsvl/apollo).
 
@@ -135,10 +135,10 @@ To launch apollo, first launch and enter a container as described in the previou
 ```
 
 * Run the LG SVL Simulator (see instructions in the [simulator repository](https://github.com/lgsvl/simulator))
-    
+  
 - Create a Simulation with the `BorregasAve` map and the `Jaguar2015XE (Apollo 3.0)` vehicle.
 - Enter `localhost:9090` for the Bridge Connection String
-    
+  
 * Open Apollo dreamview in a browser by navigating to: `localhost:8888`
     - Select the `Jaguar2015XE` vehicle and `BorregasAve` map in the top right corner.
     - Open the **Module Controller** tap (on the left bar).
