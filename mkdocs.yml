@@ -78,6 +78,7 @@ nav:
     - 'Introduction': 'sensor-plugins.md'
     - 'Lidar Sensor Plugin': 'lidar-plugin.md'
   - 'Controllable Plugins': 'controllable-plugins.md'
+  - 'NPC Plugins': 'npc-plugins.md'
   - 'Dynamics': 'ego-vehicle-dynamics.md'
 - 'Support':
   - 'FAQ': 'faq.md'
