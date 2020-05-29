@@ -8,20 +8,20 @@
 
 |Topic|Sensor Name|
 |:-:|:-:|
-|`/autoware_auto_msgs/VehicleStateReport`|CAN Bus|
-|`/nmea_sentence`|GPS|
-|`/autoware_auto_msgs/VehicleOdometry`|GPS Odometry|
-|`/imu_raw`|IMU|
-|`/points_raw`|LidarFront|
-|`/points_raw_rear`|LidarRear|
-|`/simulator/camera_node/image/compressed`|Main Camera|
+|`/lgsvl/state_report`|CAN Bus|
+|`/gnss/fix`|GPS|
+|`/lgsvl/gnss_odom`|GPS Odometry|
+|`/imu/imu_raw`|IMU|
+|`/lidar_front/points_raw`|LidarFront|
+|`/lidar_rear/points_raw`|LidarRear|
+|`/lgsvl/vehicle_odom`|Vehicle Odometry|
 
 ### Subscribed Topics [[top]] {: #subscribed-topics data-toc-label='Subscribed Topics'}
 
 |Topic|Sensor Name|
 |:-:|:-:|
-|`/autoware_auto_msgs/RawControlCommand`|Autoware Car Control|
-|`/autoware_auto_msgs/VehicleStateCommand`|Autoware Auto Vehicle State|
+|`/lgsvl/vehicle_control_cmd`|Autoware Car Control|
+|`/lgsvl/vehicle_state_cmd`|Autoware Auto Vehicle State|
 
 ### Complete JSON Configuration [[top]] {: #complete-json-configuration data-toc-label='Complete JSON Configuration'}
 
@@ -44,24 +44,7 @@
     "name": "CAN Bus",
     "params": {
       "Frequency": 10,
-      "Topic": "/vehicle_state_report"
-    },
-    "transform": {
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "pitch": 0,
-      "yaw": 0,
-      "roll": 0
-    }
-  },
-  {
-    "type": "3D Ground Truth",
-    "name": "3D Ground Truth",
-    "params": {
-      "Frequency": 10,
-      "Topic": "/simulator/ground_truth/3d_detections",
-      "MaxDistance": 300
+      "Topic": "/lgsvl/state_report"
     },
     "transform": {
       "x": 0,
@@ -77,8 +60,8 @@
     "name": "GPS",
     "params": {
       "Frequency": 12.5,
-      "Topic": "/gps",
-      "Frame": "gps",
+      "Topic": "/gnss/fix",
+      "Frame": "gnss",
       "IgnoreMapOrigin": true
     },
     "parent": "base_link",
@@ -95,11 +78,11 @@
     "type": "GPS Odometry",
     "name": "GPS Odometry",
     "params": {
-      "Frequency": 12.5,
-      "Topic": "/odom",
-      "Frame": "map",
-      "ChildFrame": "gps",
-      "IgnoreMapOrigin": false
+      "Frequency": 30.0,
+      "Topic": "/lgsvl/gnss_odom",
+      "Frame": "odom",
+      "ChildFrame": "base_link",
+      "IgnoreMapOrigin": true
     },
     "parent": "base_link",
     "transform": {
@@ -115,7 +98,7 @@
     "type": "IMU",
     "name": "IMU",
     "params": {
-      "Topic": "/imu_raw",
+      "Topic": "/imu/imu_raw",
       "Frame": "imu"
     },
     "parent": "base_link",
@@ -133,7 +116,7 @@
     "name": "LidarFront",
     "params": {
       "LaserCount": 16,
-      "MinDistance": 2,
+      "MinDistance": 2.0,
       "MaxDistance": 100,
       "RotationFrequency": 10,
       "MeasurementsPerRotation": 360,
@@ -141,8 +124,8 @@
       "CenterAngle": 0,
       "Compensated": true,
       "PointColor": "#ff000000",
-      "Topic": "/points_raw",
-      "Frame": "velodyne_front"
+      "Topic": "/lidar_front/points_raw",
+      "Frame": "lidar_front"
     },
     "parent": "base_link",
     "transform": {
@@ -159,7 +142,7 @@
     "name": "LidarRear",
     "params": {
       "LaserCount": 16,
-      "MinDistance": 2,
+      "MinDistance": 2.0,
       "MaxDistance": 100,
       "RotationFrequency": 10,
       "MeasurementsPerRotation": 360,
@@ -167,8 +150,8 @@
       "CenterAngle": 0,
       "Compensated": true,
       "PointColor": "#ff000000",
-      "Topic": "/points_raw_rear",
-      "Frame": "velodyne_rear"
+      "Topic": "/lidar_rear/points_raw",
+      "Frame": "lidar_rear"
     },
     "parent": "base_link",
     "transform": {
@@ -181,29 +164,29 @@
     }
   },
   {
-    "type": "Manual Control",
-    "name": "Manual Car Control"
-  },
-  {
     "type": "Vehicle Control",
     "name": "Autoware Car Control",
     "params": {
-      "Topic": "/vehicle_control_command"
+      "Topic": "/lgsvl/vehicle_control_cmd"
     }
   },
   {
     "type": "Vehicle State",
     "name": "Autoware Auto Vehicle State",
     "params": {
-      "Topic": "/vehicle_state_command"
+      "Topic": "/lgsvl/vehicle_state_cmd"
     }
   },
   {
     "type": "Vehicle Odometry",
     "name": "Vehicle Odometry Sensor",
     "params": {
-      "Topic": "/vehicle_odometry"
+      "Topic": "/lgsvl/vehicle_odom"
     }
+  },
+  {
+    "type": "Keyboard Control",
+    "name": "Keyboard Car Control"
   }
 ]
 ```
