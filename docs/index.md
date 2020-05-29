@@ -46,6 +46,11 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * [Python API Use Case Examples](api-example-descriptions.md)
 * [How to run a scenario](api-how-to-run-scenario.md)
 
+### Point Cloud
+
+* [Point Cloud Import](pointcloud-import.md)
+* [Point Cloud Rendering](pointcloud-rendering.md)
+
 ### Tutorials
 
 * [Reinforcement Learning with OpenAI Gym](openai-gym.md)

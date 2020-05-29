@@ -80,6 +80,9 @@ nav:
   - 'Controllable Plugins': 'controllable-plugins.md'
   - 'NPC Plugins': 'npc-plugins.md'
   - 'Dynamics': 'ego-vehicle-dynamics.md'
+  - 'Point Cloud':
+    - 'Point Cloud Import': 'pointcloud-import.md'
+    - 'Point Cloud Rendering': 'pointcloud-rendering.md'
 - 'Support':
   - 'FAQ': 'faq.md'
   - 'Contributing': 'contributing.md'
