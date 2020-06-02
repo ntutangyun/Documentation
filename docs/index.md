@@ -35,9 +35,11 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * Running with Apollo 3.0
 	* [Instructions](apollo-instructions.md)
 	* [Sample sensor configuration](apollo-json-example.md)
-* Ground truth obstacles
-	* [Viewing and subscribing to ground truth data](perception-ground-truth.md)
-	* [Sample sensor configuration for data collection](ground-truth-json-example.md)
+* LGSVL ROS/ROS2 Message Definitions
+	* [The `lgsvl_msgs` package](lgsvl-msgs.md)
+	* Ground truth obstacles
+		* [Viewing and subscribing to ground truth data](perception-ground-truth.md)
+		* [Sample sensor configuration for data collection](ground-truth-json-example.md)
 
 ### Python API
 
