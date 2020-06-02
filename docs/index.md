@@ -43,33 +43,35 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 
 ### Python API
 
-* [Python API Guide](python-api.md)
-* [Python API Quickstart Examples](api-quickstart-descriptions.md)
-* [Python API Use Case Examples](api-example-descriptions.md)
+* [Python API guide](python-api.md)
+* [Python API quickstart examples](api-quickstart-descriptions.md)
+* [Python API use case examples](api-example-descriptions.md)
 * [How to run a scenario](api-how-to-run-scenario.md)
 
 ### Point Cloud
 
-* [Point Cloud Import](pointcloud-import.md)
-* [Point Cloud Rendering](pointcloud-rendering.md)
+* [Point cloud import](pointcloud-import.md)
+* [Point cloud rendering](pointcloud-rendering.md)
 
 ### Tutorials
 
-* [Reinforcement Learning with OpenAI Gym](openai-gym.md)
-* [Deep Learning Lane Following Model](lane-following.md)
+* [Reinforcement learning with OpenAI Gym](openai-gym.md)
+* [Deep learning lane following model](lane-following.md)
 * [How to create a simple ROS2-based AD stack with LGSVL Simulator](create-ros2-ad-stack.md)
 
 
 ### Advanced
-* [Map Annotation](map-annotation.md)
+* [Map annotation](map-annotation.md)
 * [Build Instructions](build-instructions.md)
-* [Adding Assets](assets.md)
+* [Adding assets](assets.md)
 * [How to add a new ego vehicle](add-new-ego-vehicle.md)
-* [NPC Map Navigation](npc-map-navigation.md)
-* [Sensor Plugins](sensor-plugins.md)
-* [Controllable Plugins](controllable-plugins.md)
-* [NPC Plugins](npc-plugins.md)
-* [Dynamics](ego-vehicle-dynamics.md)
+* [NPC map navigation](npc-map-navigation.md)
+* Plugins
+	* [Sensor plugins](sensor-plugins.md)
+	* [LiDAR plugin](lidar-plugin.md)
+	* [Controllable plugins](controllable-plugins.md)
+	* [Traffic behavior plugins](npc-plugins.md)
+	* [Vehicle dynamics](ego-vehicle-dynamics.md)
 
 ### Support
 
