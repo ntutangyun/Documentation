@@ -5,7 +5,7 @@ All notable changes and release notes for LGSVL Simulator will be documented in 
 
 ### Added
  - Support for custom [traffic vehicle behavior plugins](npc-plugins.md)
- - Support for [Apollo 5.5](apollo-master-instructions.md) (latest master)
+ - Support for [Apollo 5.5](apollo-master-instructions.md) ([latest master](https://github.com/ApolloAuto/apollo/tree/master))
  - Support for distributed simulation
  - Velodyne VLS-128 support
  - Python API function to spawn random non-ego vehicles and pedestrians
