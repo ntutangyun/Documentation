@@ -21,9 +21,10 @@ When a terminal is mentioned, it refers to:
     - Windows
         - Click the `Unity Hub` button to have Unity Hub handle the installation process
     - Ubuntu
-        - Right click the `Unity Hub` button and `Copy Link Address`
-        - In a terminal `PATH_TO_UNITY_HUB COPIED_LINK`
+        - Right click the `Unity Hub` button and select `Copy Link Address`
+        - In a terminal, type `<PATH_TO_UNITY_HUB> <COPIED_LINK>`
             - The copied link will be in the form `unityhub://Unity-VERSION/XXXXXX` (e.g. `unityhub://2019.3.3f1/7ceaae5f7503`)
+            - Thus, if the Unity Hub application is in the current directory, type `./UnityHub.AppImage unityhub://2019.3.3f1/7ceaae5f7503`
         - Unity Hub will open and guide you through the installation of Unity Editor
     - Verify installation
         - Under the `Installs` tab of `Unity Hub` there should be the expected version shown. In the bottom-left corner of the version, there should be an icon of the other OS (e.g. on a Linux computer, the Windows logo will be shown)
