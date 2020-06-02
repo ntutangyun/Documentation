@@ -9,16 +9,17 @@ If you want to create your own point cloud based environment, you should start w
 Most of the features available for point cloud renderers are optional and can be toggled based on individual use cases. Lighting, for example, can be turned off if point cloud has light data already baked in, or calculated fully based on scene settings like time of day or weather.
 
 Most notable features include:
-- Full deferred lighting compatible with HDRP's lighting system
-- Filling holes between points
-- Rendering multiple point clouds at once
-- Normals estimation
-- Shadow casting/receiving
-- Point streaming
-- Point budget (for memory and render buffer)
-- Camera frustum or distance-based culling
-- Mesh collider generation
-- Support for color/depth camera sensors and lidar
+
+  - Full deferred lighting compatible with HDRP's lighting system
+  - Filling holes between points
+  - Rendering multiple point clouds at once
+  - Normals estimation
+  - Shadow casting/receiving
+  - Point streaming
+  - Point budget (for memory and render buffer)
+  - Camera frustum or distance-based culling
+  - Mesh collider generation
+  - Support for color/depth camera sensors and lidar
 
 ## Setup
 The easiest way to set up point cloud rendering is to perform an [import](pointcloud-import.md) with the target scene open in the background. When importing is done, you will be prompted with a choice to automatically add all of the required components to the open scene. If accepted, point cloud with default rendering settings will immediately show up in scene view.
