@@ -1,6 +1,26 @@
 # Changelog
 All notable changes and release notes for LGSVL Simulator will be documented in this file.
 
+## [2020.05] - 2020-06-02
+
+### Added
+ - Support for custom [traffic vehicle behavior plugins](npc-plugins.md)
+ - Support for [Apollo 5.5](apollo-master-instructions.md) (latest master)
+ - Support for distributed simulation
+ - Velodyne VLS-128 support
+ - Python API function to spawn random non-ego vehicles and pedestrians
+ - Unlit shadows support for point cloud environment rendering
+ - AD system-agnostic message definitions to "lgsvl_msgs" for vehicle control, CAN bus and status data, etc.
+
+### Changed
+ - Refactored traffic agent Waypoint Mode with fixes for idle and trigger waypoints
+ - Changed gnss_odom message coordinate system to right-handed coordinate system
+ - Fixed "ignore map origin" option for gnss_odom message
+ - Fixed acceleration values in IMU sensor
+ - Fix sky flickering issue during point cloud rendering
+ - Fixed LiDAR readback error
+ - Removed and replaced documentation source files from main repository to separate Documentation [repository](https://github.com/lgsvl/Documentation)
+
 ## [2020.03] - 2020-04-03
 
 ### Added

@@ -32,13 +32,13 @@ nav:
   - 'Web User Interface':
     - 'Maps': 'maps-tab.md'
     - 'Vehicles': 'vehicles-tab.md'
-    - 'Sensor Parameters': 'sensor-json-options.md'
+    - 'Sensor parameters': 'sensor-json-options.md'
     - 'Clusters': 'clusters-tab.md'
     - 'Simulations': 'simulations-tab.md'
   - 'Simulation User Interface':
-    - 'Menu Items': 'simulation-menu.md'
-    - 'Sensor Visualization': 'sensor-visualizers.md'
-    - 'Bridge Topics': 'bridge-connection-ui.md'
+    - 'Menu items': 'simulation-menu.md'
+    - 'Sensor visualization': 'sensor-visualizers.md'
+    - 'Bridge topics': 'bridge-connection-ui.md'
   - 'Configuration File and Command Line Parameters': 'config-and-cmd-line-params.md'
 - 'Integration with AD':
   - 'Running with Autoware.AI':
@@ -82,7 +82,7 @@ nav:
     - 'Controllable plugins': 'controllable-plugins.md'
     - 'Traffic behavior plugins': 'npc-plugins.md'
     - 'Vehicle dynamics': 'ego-vehicle-dynamics.md'
-  - 'Point Cloud':
+  - 'Point cloud':
     - 'Point cloud import': 'pointcloud-import.md'
     - 'Point cloud rendering': 'pointcloud-rendering.md'
 - 'Support':

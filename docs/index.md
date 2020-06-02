@@ -48,17 +48,11 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * [Python API use case examples](api-example-descriptions.md)
 * [How to run a scenario](api-how-to-run-scenario.md)
 
-### Point Cloud
-
-* [Point cloud import](pointcloud-import.md)
-* [Point cloud rendering](pointcloud-rendering.md)
-
 ### Tutorials
 
 * [Reinforcement learning with OpenAI Gym](openai-gym.md)
 * [Deep learning lane following model](lane-following.md)
 * [How to create a simple ROS2-based AD stack with LGSVL Simulator](create-ros2-ad-stack.md)
-
 
 ### Advanced
 * [Map annotation](map-annotation.md)
@@ -72,9 +66,11 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 	* [Controllable plugins](controllable-plugins.md)
 	* [Traffic behavior plugins](npc-plugins.md)
 	* [Vehicle dynamics](ego-vehicle-dynamics.md)
+* Point cloud
+	* [Point cloud import](pointcloud-import.md)
+	* [Point cloud rendering](pointcloud-rendering.md) 
 
 ### Support
-
 * [Frequently Asked Questions](faq.md)
 * [Contributing](contributing.md)
 
