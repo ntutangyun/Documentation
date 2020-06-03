@@ -77,6 +77,6 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 
 ## Copyright and License
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2019-2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.

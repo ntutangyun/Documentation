@@ -201,6 +201,6 @@ The default maps have the Vector map files included in the [LGSVL Autoware Data]
 
 ## Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2019-2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.

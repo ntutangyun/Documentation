@@ -102,6 +102,6 @@ The NPCs are defined in `_setup_npc`. The NPCs are spawned randomly around the e
 
 ## Copyright and License
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2019-2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.

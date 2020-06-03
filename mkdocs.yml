@@ -19,7 +19,7 @@ theme:
   highlightjs: true
   hljs_languages: []
 
-copyright: Copyright &copy; 2019 LG Electronics Inc.
+copyright: Copyright &copy; 2019-2020 LG Electronics Inc.
 
 google_analytics: ['UA-130546445-1','lgsvlsimulator.com/docs']
 

@@ -43,7 +43,7 @@ If you are using the LGSVL Simulator for your development, we would like to hear
 
 ## Copyright and License
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2019-2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.
 

@@ -317,6 +317,6 @@ ros2 run {your_package} {your_node}
 
 ## Copyright and License
 
-Copyright (c) 2019 LG Electronics, Inc.
+Copyright (c) 2019-2020 LG Electronics, Inc.
 
 This software contains code licensed as described in LICENSE.
