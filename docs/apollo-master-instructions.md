@@ -81,22 +81,25 @@ To get into the container:
 ./docker/scripts/dev_into.sh
 ```
 
-Build Apollo:
+Build Apollo (optimized, not debug, with GPU support):
 
 ```bash
-./apollo.sh build_gpu
+./apollo.sh build_opt_gpu
 ```
 
-**NOTE** 
-Apollo build may fail on machines with (for example) 16GB or less of RAM, depending on the number of cores due to aggressive parallelization in the build as discussed in [Apollo issue 7719](https://github.com/ApolloAuto/apollo/issues/7719).
+**NOTE**
+The Apollo build may fail on machines with less than 1GB of RAM per CPU core due to aggressive parallelization in the build, as discussed in [Apollo issue 7719](https://github.com/ApolloAuto/apollo/issues/7719).
 
-If the build fails, either re-start it until it succeeds, or try changing line 141 of `function build()` in `apollo.sh` as follows:
+If the build fails, either re-start it until it succeeds, or try changing line ~141 of `function build()` in `apollo.sh` as follows:
 
 Replace this:
    `JOB_ARG="--jobs=$(nproc) --ram_utilization_factor 80"`
 
 With this, which will use all but two cores for the build:
    `JOB_ARG="--jobs=$(expr $(nproc) - 2 ) --ram_utilization_factor 70"`
+
+Alternatively, you can analyze `top` while building, and decide how many jobs to enable to avoid running out of memory; then set a specific value in `JOB_ARG`, e.g. `--jobs=6`.
+
 
 ## Launching Apollo alongside the Simulator [[top]] {: #launching-apollo-alongide-the-simulator data-toc-label='Launching Apollo alongisde the Simulator'}
 
