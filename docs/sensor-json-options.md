@@ -61,6 +61,7 @@ A `SENSOR` is defined in the JSON configuration in the following format:
 
 - `parent` (OPTIONAL) a sensor's `transform` can be relative to another sensor. 
 `STRING` is the `name` of the base sensor transform to which this sensor is relative.
+  
   - If omitted, the `transform` is relative to the origin of the vehicle.
 - `transform` is the location and rotation of the sensor relative to the local position of the vehicle. 
 The Unity left-hand coordinate system is used (+x right, +y up, +z forward, +pitch tilts the front down,
@@ -92,7 +93,7 @@ This is the type of sensor that would be used for the `Main Camera` in Apollo.
 
 \* If `Distorted` is `true`, `DistortionParameters` must be an empty list or a list of FOUR floats. 
 The values in this list should come from calibration result of real camera. Setting arbitrary values may cause undefined result. 
-If `Distorted` is `false`, `DistortionParameters` is ignored.
+If `Distorted` is `false`, `DistortionParameters`, `Fisheye` and `Xi` are ignored.
 
 \*\* If `Fisheye` is `true`, `Xi` should be a value from calibration result of real camera. Setting arbitrary value may cause undefined result.
 If `Fisheye` is `false`, `Xi` is ignored.
