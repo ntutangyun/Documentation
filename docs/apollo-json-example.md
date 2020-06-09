@@ -148,7 +148,7 @@
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/apollo/sensor/camera/traffic/image_short/compressed"
     },
     "transform": {
@@ -170,7 +170,7 @@
       "JpegQuality": 75,
       "FieldOfView": 10,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/apollo/sensor/camera/traffic/image_long/compressed"
     },
     "transform": {

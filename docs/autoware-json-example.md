@@ -111,7 +111,7 @@
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/camera_node/image/compressed",
       "Frame": "camera"
     },

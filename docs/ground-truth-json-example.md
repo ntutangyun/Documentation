@@ -36,7 +36,7 @@
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/apollo/sensor/camera/front_6mm/image/compressed"
     },
     "transform": {
@@ -126,7 +126,7 @@
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/depth_camera"
     },
     "transform": {
@@ -147,7 +147,7 @@
       "Frequency": 15,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/segmentation_camera"
     },
     "transform": {

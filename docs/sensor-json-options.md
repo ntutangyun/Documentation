@@ -85,7 +85,7 @@ This is the type of sensor that would be used for the `Main Camera` in Apollo.
 |`JpegQuality`|defines the quality if the image output|%|Int|75|0|100|
 |`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|60|1|90
 |`MinDistance`|defines how far an object must be from the sensor for it to be detected|meters|Float|0.1|0.01|1000|
-|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|1000|0.01|2000|
+|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|2000|0.01|2000|
 |`Distorted`|defines if the image is distorted||Bool|`false`|||
 |`DistortionParameters`|parameters used by distortion *||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
@@ -112,7 +112,7 @@ If `Fisheye` is `false`, `Xi` is ignored.
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/main_camera",
       "Frame": "camera",
       "Distorted": true,
@@ -142,7 +142,7 @@ This sensor returns an image where the shades on the grey-scale correspond to th
 |`JpegQuality`|defines the quality if the image output|%|Int|100|0|100|
 |`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|60|1|90
 |`MinDistance`|defines how far an object must be from the sensor for it to be detected|meters|Float|0.1|0.01|1000|
-|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|1000|0.01|2000|
+|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|2000|0.01|2000|
 |`Distorted`|defines if the image is distorted||Bool|`false`|||
 |`DistortionParameters`|parameters used by distortion*||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
@@ -166,7 +166,7 @@ This sensor returns an image where the shades on the grey-scale correspond to th
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/depth_camera"
     },
     "transform": {
@@ -207,7 +207,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 |`Frequency`|defines the maximum rate that messages will be published|Hertz|Int|15|1|100|
 |`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|60|1|90
 |`MinDistance`|defines how far an object must be from the sensor for it to be detected|meters|Float|0.1|0.01|1000|
-|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|1000|0.01|2000|
+|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|2000|0.01|2000|
 |`Distorted`|defines if the image is distorted||Bool|`false`|||
 |`DistortionParameters`|parameters used by distortion*||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
@@ -231,7 +231,7 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
       "Frequency": 15,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
  	  "InstanceSegmentationTags": [
 		"Car",
 		"Pedestrian"
@@ -821,7 +821,7 @@ Example usage
       "JpegQuality": 75,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/main_camera",
       "Frame": "camera",
       "Distorted": true,
