@@ -2,6 +2,8 @@
 
 This instruction is tested after [the last commit](https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5) enabling LGSVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed.
 
+**For those who used our fork of Apollo 5.0 before: please note the new step to select the correct setup mode in Dreamview**.
+
 [![](images/apollo-sim.png)](images/full_size_images/apollo-sim.png)
 
 <h2> Table of Contents</h2>
@@ -135,7 +137,7 @@ To launch apollo, first launch and enter a container as described in the previou
 
 
 * Open Apollo Dreamview in a browser by navigating to: `localhost:8888`
-    - NEW for Apollo Master: Select the `Mkz Lgsvl` setup mode, from the menu to the left of the vehicle menu.
+    - **NEW for Apollo Master**: Select the `Mkz Lgsvl` setup mode, from the menu to the left of the vehicle menu.
     - Select the `Lincoln2017MKZ LGSVL` vehicle and `Borregas Ave` map in the top right corner.
     - Open the **Module Controller** tap (on the left bar).
     - Enable **Localization**, **Transform**, **Perception**, **Traffic Light**, **Planning**, **Prediction**, **Routing**, and **Control**.
@@ -143,7 +145,7 @@ To launch apollo, first launch and enter a container as described in the previou
     - Select a destination by clicking on a lane line and clicking **Submit Route**.
     - Watch the vehicle navigate to the destination.
 - To stop the docker container run the `dev_start.sh stop` script in `apollo/docker/scripts` in a new terminal (not in the docker container).
-    
+  
 * If you are using ufw, it is easiest to completely disable the firewall to allow connections `sudo ufw disable`
     - If that is not possible, add the following rules:
         - These are required even if running the simulator and Apollo on the same machine
