@@ -486,7 +486,7 @@ for sensor in ego.get_sensors():
     sensor.save("lidar.pcd")
 ```
 
-A `.pcd` file is in the [binary Point Cloud Data format](http://pointclouds.org/documentation/tutorials/pcd_file_format.php) where each point has x/y/z coordinates as 4-byte floats and a 1-byte unsigned int as intensity (0...255).
+A `.pcd` file is in the [binary Point Cloud Data format](http://pointclouds.org/documentation/tutorials/pcd_file_format.html) where each point has x/y/z coordinates as 4-byte floats and a 1-byte unsigned int as intensity (0...255).
 
 ### IMU Sensor [[top]] {: #imu-sensor data-toc-label='IMU Sensor'}
 

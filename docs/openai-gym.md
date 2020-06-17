@@ -16,27 +16,26 @@ To facilitate developing reinforcement learning algorithms with the [LGSVL Simul
 
 ## Setup
 
-1. Clone the LGSVL Simulator repository:
-```
-git clone https://github.com/lgsvl/simulator.git
-```
-2. Install Python API using [this guide](https://github.com/lgsvl/simulator/tree/master/Api).
-
+1. Install LGSVL Simulator using [this guide](getting-started.md#getting-started):
+2. Install Python API using [this guide](python-api.md).
 3. Install openai gym, numpy, and opencv:
-```
-pip install --user gym, numpy, opencv-python
-```
 
-4. Clone this repository:
-```
-git clone https://github.com/lgsvl/gym-lgsvl.git
-```
+    ```
+    pip install --user gym, numpy, opencv-python
+    ```
+  
+4. Clone the gym-lgsvl repository:
 
+    ```
+    git clone https://github.com/lgsvl/gym-lgsvl.git
+    ```
+  
 5. Install gym-lgsvl using pip:
-```
-cd gym-lgsvl/
-pip install --user -e .
-```
+
+    ```
+    cd gym-lgsvl/
+    pip install --user -e .
+    ```
 
 ## Getting Started
 The simulator must be running on the `menu` scene to be used with the `gym-lgsvl`. The scene can be loaded either in the Unity Editor or the simulator binary build (download [latest release](https://github.com/lgsvl/simulator/releases)). The binary build will have superior performance.
@@ -56,7 +55,7 @@ python -m baselines.run --alg=a2c --env=gym_lgsvl:lgsvl-v0 --num_timesteps=1e5
 
 
 ## Customizing the environment
-The specifics of the environment you will need will depend on the reinforcement learning problem you are trying to solve. By default, the `gym-lgsvl` environment has a simple setup intended to be a starting point for building more advanced problems. Training an agent with the default environment would be difficult without modiification. In the default configuration, the vehicle uses a single front facing camera as observation and uses continuous control parameters for driving the vehicle. For more advanced state representations, modifications will be needed. The entire environment is defined in [lgsvl_env.py](/gym_lgsvl/envs/lgsvl_env.py).
+The specifics of the environment you will need will depend on the reinforcement learning problem you are trying to solve. By default, the `gym-lgsvl` environment has a simple setup intended to be a starting point for building more advanced problems. Training an agent with the default environment would be difficult without modiification. In the default configuration, the vehicle uses a single front facing camera as observation and uses continuous control parameters for driving the vehicle. For more advanced state representations, modifications will be needed. The entire environment is defined in [lgsvl_env.py](https://github.com/lgsvl/gym-lgsvl/blob/master/gym_lgsvl/envs/lgsvl_env.py).
 
 ### CONFIG
 Some of the basic configuration are passed to the environment through `CONFIG`. `action_space` and `observation_space` definitions are required and are defined using `gym.spaces`.

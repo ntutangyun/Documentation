@@ -51,7 +51,7 @@ To install Docker CE please refer to the [official documentation](https://docs.
 
 ### Installing Autoware.auto [[top]] {: #installing-autoware-auto data-toc-label='Installing Autoware.auto'}
 
-- Follow the [installation and development setup](https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-and-development.html) guide for Autoware.auto.
+- Follow the [installation and development setup](https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation.html) guide for Autoware.auto.
 
 ### Simulator installation [[top]] {: #simulator-installation data-toc-label='Simulator Installation'}
 

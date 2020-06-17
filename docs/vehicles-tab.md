@@ -25,9 +25,9 @@ The calibration files for the vehicles are available in the same page. Please se
 
 Example JSON configurations can be found on these pages:
 
-- [Apollo 3.0 JSON](#apollo-json-example.md)
-- [Apollo 5.0 JSON](#apollo5-0-json-example.md)
-- [Autoware JSON](#autoware-json-example.md)
+- [Apollo 5.0 JSON](apollo5-0-json-example.md)
+- [Apollo 3.0 JSON](apollo-json-example.md)
+- [Autoware JSON](autoware-json-example.md)
 
 ### How to add a Vehicle [[top]] {: #how-to-add-a-vehicle data-toc-label='How to add a Vehicle'}
 1. Click the `Add new` button
