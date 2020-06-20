@@ -133,9 +133,9 @@ When a terminal is mentioned, it refers to:
 6. In the Vehicles tab, `Add new` vehicle with the URL to a vehicle assetbundle
 - ex. `C:\Users\XXX\Desktop\Simulator\AssetBundles\vehicle_jaguar2015xe`
 
-7. (Optional) Add a manual control "sensor" to the vehicle to enable driving
+7. (Optional) Add a keyboard control "sensor" to the vehicle to enable driving
    1. Click the wrench icon next to the vehicle name
-   2. In the text box insert `[{"type": "Manual Control", "name": "Manual Car Control"}]`
+   2. In the text box insert `[{"type": "Keyboard Control", "name": "Keyboard Car Control"}]`
 
 7. In the Simulations tab, `Add new` simulation with the added map and vehicle
 

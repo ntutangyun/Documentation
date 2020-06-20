@@ -21,13 +21,15 @@ The calibration files for the vehicles are available in the same page. Please se
 
 - [Apollo 5.0](apollo5-0-instructions.md)
 - [Apollo 3.0](apollo-instructions.md)
-- [Autoware](autoware-instructions.md)
+- [Autoware.AI](autoware-instructions.md)
+- [Autoware.Auto](autoware-auto-instructions.md)
 
 Example JSON configurations can be found on these pages:
 
 - [Apollo 5.0 JSON](apollo5-0-json-example.md)
 - [Apollo 3.0 JSON](apollo-json-example.md)
-- [Autoware JSON](autoware-json-example.md)
+- [Autoware.AI JSON](autoware-json-example.md)
+- [Autoware.Auto JSON](autoware-auto-json-example.md)
 
 ### How to add a Vehicle [[top]] {: #how-to-add-a-vehicle data-toc-label='How to add a Vehicle'}
 1. Click the `Add new` button
@@ -73,10 +75,13 @@ ROS1 Apollo Bridge requires IP address and port number while setting up Simulati
 ### Example JSON [[top]] {: #example-json data-toc-label='Example JSON'}
 This is a shortened version of the JSON configuration on the `Jaguar2015XE (Autoware)` default vehicle. It uses a `ROS` bridge type.
 
-The JSON includes a GPS sensor in the center of the vehicle that publishes data on the "/nmea_sentence" topic, 
-a LIDAR sensor 2.312m above the center of the vehicle that publishes data on the "/points_raw" topic,
-a Manual Control input which allows the keyboard input to control the car,
-and a Vehicle Control input which subscribes to the Autoware AD Stack control commands.
+The JSON includes:
+
+* a GPS sensor in the center of the vehicle that publishes data on the "/nmea_sentence" topic
+* a LIDAR sensor 2.312m above the center of the vehicle that publishes data on the "/points_raw" topic
+* a Keyboard Control input which allows the keyboard input to control the car
+* a Vehicle Control input which subscribes to the Autoware AD Stack control commands
+
 ```JSON
 [
   {
@@ -123,8 +128,8 @@ and a Vehicle Control input which subscribes to the Autoware AD Stack control co
     }
   },
   {
-    "type": "Manual Control",
-    "name": "Manual Car Control"
+    "type": "Keyboard Control",
+    "name": "Keyboard Car Control"
   },
   {
     "type": "Vehicle Control",

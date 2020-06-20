@@ -200,8 +200,12 @@
     }
   },
   {
-    "type": "Manual Control",
-    "name": "Manual Car Control"
+    "type": "Keyboard Control",
+    "name": "Keyboard Car Control"
+  },
+  {
+    "type": "Wheel Control",
+    "name": "Wheel Car Control"
   },
   {
     "type": "Vehicle Control",
