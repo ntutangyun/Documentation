@@ -10,9 +10,10 @@ This page details the different available sensors and the configuration options 
 
 Example JSON configurations are available here:
 
-- [Apollo 3.0 JSON](apollo-json-example.md)
 - [Apollo 5.0 JSON](apollo5-0-json-example.md)
-- [Autoware JSON](autoware-json-example.md)
+- [Apollo 3.0 JSON](apollo-json-example.md)
+- [Autoware.AI](autoware-instructions.md)
+- [Autoware.Auto](autoware-auto-instructions.md)
 - [Data Collection JSON](ground-truth-json-example.md)
 - Some Lidar sensor JSONs:
     - [Velodyne VLP-16](velodyne-json-examples.md#vlp-16)
