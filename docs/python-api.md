@@ -432,7 +432,7 @@ classes:
 
 Each sensor has the following common members:
 
- * `name` - name of sensor, to diffrentiate sensors of the same type, for example, to choose one out of multiple cameras attached to EgoVehicle
+ * `name` - name of sensor, to differentiate sensors of the same type, for example, to choose one out of multiple cameras attached to EgoVehicle
  * `transform` - property that contains position and rotation of a sensor relative to the agent transform 
  * `enabled` - bool property, set to `True` if sensor is enabled for capturing and sending data to
    ROS or Cyber bridge
@@ -448,7 +448,7 @@ The Camera sensor has the following read only properties:
  * `near_plane` - distance of near plane
  * `far_plane` - distance of far plane
  * `format` - format of image ("RGB" for 24-bit color image, "DEPTH" - 8-bit grayscale depth buffer,
-   "SEMANTIC" - 24-bit color image with sematic segmentation)
+   "SEGMENTATION" - 24-bit color image with semantic/instance segmentation)
 
 Camera image can be saved to disk by calling `save`:
 

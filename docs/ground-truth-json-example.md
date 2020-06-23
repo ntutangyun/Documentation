@@ -13,7 +13,7 @@
 |`/simulator/ground_truth/3d_detections`|3D Ground Truth|
 |`/simulator/ground_truth/2d_detections`|2D Ground Truth|
 |`/simulator/depth_camera`|Depth Camera|
-|`/simulator/semantic_camera`|Semantic Camera|
+|`/simulator/segmentation_camera`|Segmentation Camera|
 
 ### Subscribed Topics [[top]] {: #subscribed-topics data-toc-label='Subscribed Topics'}
 
@@ -139,8 +139,8 @@
     }
   },
   {
-    "type": "Semantic Camera",
-    "name": "Semantic Camera",
+    "type": "Segmentation Camera",
+    "name": "Segmentation Camera",
     "params": {
       "Width": 1920,
       "Height": 1080,
@@ -148,7 +148,7 @@
       "FieldOfView": 50,
       "MinDistance": 0.1,
       "MaxDistance": 1000,
-      "Topic": "/simulator/semantic_camera"
+      "Topic": "/simulator/segmentation_camera"
     },
     "transform": {
       "x": 0,

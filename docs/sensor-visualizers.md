@@ -26,8 +26,8 @@ Visualized Depth camera shows objects colored on a grayscale based on the distan
 
 [![](images/depth-camera-visualized.png)](images/full_size_images/depth-camera-visualized.png)
 
-### Semantic Camera [[top]] {: #semantic-camera data-toc-label='Semantic Camera'}
-Visualized Semantic camera shows objects colored according to the object tag.
+### Segmentation Camera [[top]] {: #segmentation-camera data-toc-label='Segmentation Camera'}
+Visualized Segmentation camera shows objects colored according to the object tag.
 
 |Tag|Color|Hex Value|
 |:-:|:-:|:-:|
@@ -43,7 +43,9 @@ Visualized Semantic camera shows objects colored according to the object tag.
 |Pedestrian|Red|#FF0000|
 |Curb|Dark Purple|#4A254F|
 
-[![](images/semantic-visualized.png)](images/full_size_images/semantic-visualized.png)
+If a tag is included in "InstanceSegmentationTags", each instance of objects with that tag is colored differently, but all will have same hue. For example, the following figure shows a segmentation result with semantic "Car" having instance segmentation (note that cars are all bluish but each instance has a different color).
+
+[![](images/segmentation-visualized.png)](images/full_size_images/segmentation-visualized.png)
 
 ### 2D Ground Truth [[top]] {: #2d-ground-truth data-toc-label='2D Ground Truth'}
 Visualized 2D Ground Truth shows the same things as a color camera except pedestrians are enclosed in a yellow wire box and NPCs are enclosed in a green wire box.
