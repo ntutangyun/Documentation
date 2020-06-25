@@ -11,7 +11,7 @@
 
 This guide goes through how to run Autoware.AI with the LGSVL simulator.
 
-In order to run Autoware with the LGSVL simulator, it is easiest to pull the official Autoware Docker image (see the [official guide, Case 1](https://gitlab.com/autowarefoundation/autoware.ai/autoware/-/wikis/Generic-x86-Docker#case-1-using-autoware-docker-containers-with-pre-built-source-code-included) for more details), but it is also possible to [build Autoware from source](https://gitlab.com/autowarefoundation/autoware.ai/autoware/wikis/Source-Build).
+In order to run Autoware with the LGSVL simulator, it is easiest to pull the official Autoware Docker image (see the [official guide, Case 1](https://github.com/Autoware-AI/autoware.ai/wiki/Generic-x86-Docker#run-an-autoware-docker-container) for more details), but it is also possible to [build Autoware from source](https://github.com/Autoware-AI/autoware.ai/wiki/Source-Build).
 
 Autoware communicates with the LGSVL simulator using the rosbridge_suite, which provides JSON interfacing with ROS publishers/subscribers. The official Autoware Docker containers have rosbridge_suite included.
 
@@ -83,7 +83,7 @@ Clone the `docker` repository from `autoware.ai` into a working directory:
 
 ```bash
 cd $WORKING_DIRECTORY
-git clone https://gitlab.com/autowarefoundation/autoware.ai/docker.git
+git clone https://github.com/Autoware-AI/docker.git
 ```
 
 If you are using the latest Docker and NVIDIA Container Toolkit, the `docker/generic/run.sh` script will need to be modified. To determine whether you need to do this run `type nvidia-docker` in a terminal. If you get output similar to: `nvidia-docker is /usr/bin/nvidia-docker`, the script will work as is. If not, then modify it as described below:
