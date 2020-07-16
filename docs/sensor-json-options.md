@@ -731,7 +731,48 @@ This sensor outputs the objects detected by the radar. Detected objects are visu
 }
 ```
 
+### Ultrasonic [[top]] {: #ultrasonic data-toc-label='Ultrasonic'}
+
+This sensor outputs the distance (to the center of the sensor) of the closest point within the sensor's FOV.
+
+|   Parameter   |                       Description                        |  Unit  | Type | Default Value | Minimum | Maximum |
+| :-----------: | :------------------------------------------------------: | :----: | :--: | :-----------: | :-----: | :-----: |
+|    `Width`    |          defines the width of the image output           | pixels | Int  |     400     |    1    |  1920   |
+|   `Height`    |          defines the height of the image output          | pixels | Int  |     160     |    1    |  1080   |
+|  `Frequency`  | defines the maximum rate that messages will be published | Hertz  | Int  |      15       |    1    |   100   |
+| `JpegQuality` |         defines the quality if the image output          |   %    | Int  |      75       |    0    |   100   |
+|`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|40|1|90|
+|`MinDistance`|defines how far an object must be from the sensor for it to be detected|meters|Float|0.3|0.01|1000|
+|`MaxDistance`|defines how close an object must be to the sensor for it to be detected|meters|Float|2.0|0.01|2000|
+
+```JSON
+{
+    "type": "Ultrasonic",
+    "name": "Ultrasonic Sensor",
+    "params": {
+        "Width": 400,
+        "Height": 160,
+        "Frequency": 15,
+        "JpegQuality": 75,
+        "FieldOfView": 50,
+        "MinDistance": 0.3,
+        "MaxDistance": 2,
+        "Topic": "/simulator/ultrasonic",
+        "Frame": "ultrasonic"
+    },
+    "transform": {
+        "x": 0,
+        "y": 0.5,
+        "z": 2.5,
+        "pitch": -13,
+        "yaw": 0,
+        "roll": 0
+    }
+}
+```
+
 ### Clock [[top]] {: #clock data-toc-label='Clock'}
+
 This sensor outputs simulated time to ROS as [rosgraph_msgs/Clock](http://docs.ros.org/api/rosgraph_msgs/html/msg/Clock.html) message.
 Only parameter to use is topic name.
 
