@@ -82,7 +82,7 @@ git clone -b 0.2.7 https://github.com/RobotWebTools/ros2-web-bridge.git
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
 cd ros2-web-bridge
 npm install    # If node.js packages are not installed, run this.
 ```
@@ -135,7 +135,7 @@ node bin/rosbridge.js
 
 You should now be able to see the lidar point cloud in rviz (see image below).
 
-If the pointcloud is not visible make sure the fixed frame is set to `velodyne_front` and that a PointCloud2 message is added which listens on the `/points_raw` topic.
+If the pointcloud is not visible make sure the Fixed Frame (under Global Options) is set to `lidar_front` and that a PointCloud2 message is added which listens on the `/lidar_front/points_raw` topic.
 
 ![](images/autoware-auto-rviz.png)
 

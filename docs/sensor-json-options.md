@@ -397,6 +397,7 @@ This sensor will visualize bounding boxes on objects as detected by the AD Stack
 
 ### CAN-Bus [[top]] {: #can-bus data-toc-label='CAN-Bus'}
 This sensor sends data about the vehicle chassis. The data includes:
+
 - Speed [m/s]
 - Throttle [%]
 - Braking [%]
@@ -418,7 +419,6 @@ This sensor sends data about the vehicle chassis. The data includes:
 - Altitude [m]
 - Orientation [3D Vector of Euler angles]
 - Velocity [3D Vector of m/s]
-
 
 |Parameter|Description|Unit|Type|Default Value|Minimum|Maximum|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|

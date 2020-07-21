@@ -14,10 +14,9 @@ When a terminal is mentioned, it refers to:
         - Check `Allow executing file as program`
         - Alternatively, in the terminal run `sudo chmod +x UnityHub.AppImage`
 
-2. Download and Install Unity 2019.3.3f1:
+2. Download and Install Unity 2019.3.3f1 from the [Unity Download Archive](https://unity3d.com/get-unity/download/archive):
     - **IMPORTANT** include Mono support for both Windows and Linux when installing Unity
     - (Optional) include support for Visual Studio for easier debugging
-    - [Unity Download Archive](https://unity3d.com/get-unity/download/archive)
     - Windows
         - Click the `Unity Hub` button to have Unity Hub handle the installation process
     - Ubuntu
@@ -57,7 +56,7 @@ When a terminal is mentioned, it refers to:
         - Navigate to `Simulator/Assets/Materials/EnvironmentMaterials/`
         - There should be a `EnvironmentDamageAlbedo.png` in this folder
         - Open the image, it should be a mostly grey square that looks like concrete
-        - If the image cannot be opend, `Git LFS` was not installed before cloning the repository
+        - If the image cannot be opened, `Git LFS` was not installed before cloning the repository
             - Install `Git LFS` following step 4
             - In a terminal, navigate to the `Simulator` folder so that the terminal is similar to `/Simulator$ `
             - `git lfs pull`
