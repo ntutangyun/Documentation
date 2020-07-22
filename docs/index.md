@@ -56,6 +56,7 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 
 ### Advanced
 * [Supported message types](simulator-messages.md)
+* [Understanding LGSVL Simulator coordinate systems](simulator-coordinate-system.md)
 * [Map annotation](map-annotation.md)
 * [Build instructions](build-instructions.md)
 * [Adding assets](assets.md)

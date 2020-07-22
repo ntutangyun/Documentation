@@ -72,6 +72,7 @@ nav:
   - 'How to collect data with control calibration sensor': 'control-calibration.md'
 - 'Advanced':
   - 'Supported message types': 'simulator-messages.md'
+  - 'Simulator coordinate system': 'simulator-coordinate-system.md'
   - 'Map annotation': 'map-annotation.md'
   - 'Build instructions': 'build-instructions.md'
   - 'Adding assets': 'assets.md'
