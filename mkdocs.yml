@@ -85,6 +85,7 @@ nav:
   - 'Point cloud':
     - 'Point cloud import': 'pointcloud-import.md'
     - 'Point cloud rendering': 'pointcloud-rendering.md'
+  - 'Unity help': 'unity-help.md'
 - 'Support':
   - 'FAQ': 'faq.md'
   - 'Contributing': 'contributing.md'
