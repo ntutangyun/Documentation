@@ -77,7 +77,8 @@ nav:
   - 'How to add a new ego vehicle': 'add-new-ego-vehicle.md'
   - 'NPC map navigation': 'npc-map-navigation.md'
   - 'Plugins': 
-    - 'Introduction': 'sensor-plugins.md'
+    - 'Sensor plugins': 'sensor-plugins.md'
+    - 'Bridge plugins': 'bridge-plugins.md'
     - 'Lidar sensor plugin': 'lidar-plugin.md'
     - 'Controllable plugins': 'controllable-plugins.md'
     - 'Traffic behavior plugins': 'npc-plugins.md'
