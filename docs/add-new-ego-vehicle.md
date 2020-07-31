@@ -1,15 +1,17 @@
 # How to Add a New Ego Vehicle
 
-This tutorial works with Simulator Release [2019.05](https://github.com/lgsvl/simulator/releases/tag/2019.05)
+This tutorial works with LGSVL Simulator release [2019.05](https://github.com/lgsvl/simulator/releases/tag/2019.05).
 
 This document will describe how to create a new ego vehicle in the LGSVL Simulator.
 
 ## Video
 
-[![Add New Ego Vehicle](images/ego-vehicle-thumbnail.jpg)](https://youtu.be/2fXxqBFDNHM)
-
-([Link](https://youtu.be/2fXxqBFDNHM))
-
+<div>
+<iframe width="696" height="391" src="https://www.youtube.com/embed/2fXxqBFDNHM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+([Link](https://youtu.be/2fXxqBFDNHM)) Adding a new ego vehicle in LGSVL Simulator.
+<br>
+<br>
 
 ## Getting Started
 
@@ -154,7 +156,7 @@ Next, update the SensorArray public references:
 ### Adaptation to Cluster Simulation
 Cluster Simulation provides synchronization of every `Rigidbody` component in the vehicle, no changes are required in the prefab.
 
-For advanced solutions in the cluster simulations, like synchronization of other components, refer to the [Cluster Simulation Introduction](cluster-simulation-introduction.md)
+For advanced solutions in the cluster simulations, like synchronization of other components, refer to the [Cluster Simulation Introduction](cluster-simulation-introduction.md).
 
 ## Final Steps
 
@@ -167,9 +169,3 @@ For advanced solutions in the cluster simulations, like synchronization of other
 1. Click the Vehicle popup to see the new vehicle in the vehicle list.
 
 Congratulations! You have successfully added a new ego vehicle!
-
-## Copyright and License
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

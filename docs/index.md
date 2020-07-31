@@ -58,7 +58,8 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * [Map annotation](map-annotation.md)
 * [Build Instructions](build-instructions.md)
 * [Adding assets](assets.md)
-* [How to add a new ego vehicle](add-new-ego-vehicle.md)
+* [Adding a new map](add-new-map.md)
+* [Adding a new ego vehicle](add-new-ego-vehicle.md)
 * [NPC map navigation](npc-map-navigation.md)
 * Plugins
 	* [Sensor plugins](sensor-plugins.md)
@@ -73,10 +74,3 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 ### Support
 * [Frequently Asked Questions](faq.md)
 * [Contributing](contributing.md)
-
-
-## Copyright and License
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.
