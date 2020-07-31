@@ -74,7 +74,8 @@ nav:
   - 'Map annotation': 'map-annotation.md'
   - 'Build instructions': 'build-instructions.md'
   - 'Adding assets': 'assets.md'
-  - 'How to add a new ego vehicle': 'add-new-ego-vehicle.md'
+  - 'Adding a new map': 'add-new-map.md'
+  - 'Adding a new vehicle': 'add-new-ego-vehicle.md'
   - 'NPC map navigation': 'npc-map-navigation.md'
   - 'Plugins': 
     - 'Sensor plugins': 'sensor-plugins.md'
