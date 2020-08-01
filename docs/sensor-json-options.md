@@ -74,6 +74,28 @@ The Unity left-hand coordinate system is used (+x right, +y up, +z forward, +pit
   - `yaw` is the rotation around the y-axis
   - `roll` is the rotation around the z-axis
 
+
+### Clock [[top]] {: #clock data-toc-label='Clock'}
+
+This sensor outputs simulated time to ROS as [rosgraph_msgs/Clock](http://docs.ros.org/api/rosgraph_msgs/html/msg/Clock.html) message, or to CyberRT as [clock](https://github.com/ApolloAuto/apollo/blob/master/cyber/proto/clock.proto) message.
+The only parameter to use is topic/channel name.
+
+For ROS, you can add `<param name="/use_sim_time" value="true">` to their ROS launch file, or use `rosparam set /use_sim_time true`
+in command line, to have a ROS node use simulation time according to the `/clock` topic. For more details please refer to [this page](http://wiki.ros.org/Clock#Using_Simulation_Time_from_the_.2BAC8-clock_Topic).
+
+For CyberRT, you can set ``clock_mode`` in [cyber.pb.conf](https://github.com/ApolloAuto/apollo/blob/master/cyber/conf/cyber.pb.conf#L30) as ``MODE_MOCK`` to have CyberRT use simulation time according to the ``/clock`` topic.
+
+```JSON
+{
+    "type": "Clock",
+    "name": "Clock Sensor",
+    "params": {
+      "Topic": "/clock"
+    }
+}
+```
+
+
 ### Color Camera [[top]] {: #color-camera data-toc-label='Color Camera'}
 This is the type of sensor that would be used for the `Main Camera` in Apollo.
 
@@ -771,24 +793,6 @@ This sensor outputs the distance (to the center of the sensor) of the closest po
 }
 ```
 
-### Clock [[top]] {: #clock data-toc-label='Clock'}
-
-This sensor outputs simulated time to ROS as [rosgraph_msgs/Clock](http://docs.ros.org/api/rosgraph_msgs/html/msg/Clock.html) message.
-Only parameter to use is topic name.
-
-Users can add `<param name="/use_sim_time" value="true">` to their ROS launch file, or use `rosparam set /use_sim_time true`
-in command line, to have a ROS node use simulation time according to the `/clock` topic. 
-For more details please refer to [this page](http://wiki.ros.org/Clock#Using_Simulation_Time_from_the_.2BAC8-clock_Topic).
-
-```JSON
-{
-    "type": "Clock",
-    "name": "ROS Clock",
-    "params": {
-      "Topic": "/clock"
-    }
-}
-```
 
 ### Control Calibration [[top]] {: #control-calibration data-toc-label='Control Calibration'}
 This sensor outputs control calibration criteria collected by AD Stacks (Apollo, Autoware). It generates steering, throttle or brakes with gear commands between minimum and maximum of velocity during duration.
