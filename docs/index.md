@@ -55,8 +55,9 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * [How to create a simple ROS2-based AD stack with LGSVL Simulator](create-ros2-ad-stack.md)
 
 ### Advanced
+* [Supported message types](simulator-messages.md)
 * [Map annotation](map-annotation.md)
-* [Build Instructions](build-instructions.md)
+* [Build instructions](build-instructions.md)
 * [Adding assets](assets.md)
 * [Adding a new map](add-new-map.md)
 * [Adding a new ego vehicle](add-new-ego-vehicle.md)
