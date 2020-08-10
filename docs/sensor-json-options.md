@@ -656,7 +656,7 @@ This sensor outputs an image where objects are encased in a box. The color of th
 |`Height`|defines the height of the iamge|pixels|Int|1080|1|1080|
 |`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|60|1|90|
 |`MinDistance`|defines how far an object must be from the sensor to be in the image|meters|Float|0.1|0.01|1000|
-|`MaxDistance`|defines how close an object must be to the sensor to be in the image|meters|Float|1000|0.01|2000|
+|`MaxDistance`|defines how close an object must be to the sensor to be in the image|meters|Float|2000|0.01|2000|
 |`DetectionRange`|defines how close an object must be to be given a bounding box|meters|Float|100|0.01|2000|
 
 ```JSON
@@ -696,7 +696,7 @@ In order for bounding boxes to align properly, parameters should match the same 
 |`Height`|defines the height of the iamge|pixels|Int|1080|1|1080|
 |`FieldOfView`|defines the vertical angle that the camera sees|degrees|Float|60|1|90|
 |`MinDistance`|defines how far an object must be from the sensor to be in the image|meters|Float|0.1|0.01|1000|
-|`MaxDistance`|defines how close an object must be to the sensor to be in the image|meters|Float|1000|0.01|2000|
+|`MaxDistance`|defines how close an object must be to the sensor to be in the image|meters|Float|2000|0.01|2000|
 
 ```JSON
 {
@@ -707,7 +707,7 @@ In order for bounding boxes to align properly, parameters should match the same 
       "Height": 1080,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/ground_truth/2d_visualize"
     },
     "transform": {

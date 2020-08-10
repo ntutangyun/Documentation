@@ -104,7 +104,7 @@
       "Height": 1080,
       "FieldOfView": 50,
       "MinDistance": 0.1,
-      "MaxDistance": 1000,
+      "MaxDistance": 2000,
       "Topic": "/simulator/ground_truth/2d_visualize"
     },
     "transform": {
