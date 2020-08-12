@@ -15,7 +15,7 @@ Currently, annotating map is only recommended while running the simulator as a U
 
 [![](images/annotation-window-menu.png)](images/annotation-window-menu.png)
 
-- By default, map annotation is not shown. Click `View All`  under `View Modes` to show existing map annotation.
+- By default, map annotation is not shown. Click `View All`  under `View Modes` to show all existing map annotations. Or you can click `Lock View Selected` to only show the annotations you are selecting.
 - Before annotating, drag in the correct `Parent Object`, for example `TrafficLanes`. Then every new object you create will be under `TrafficLanes` object.	
 - The expected object hierarchy is as follows:
     - `Map` - This prefab which will be the object containing all the HD Annotations. The `MapHolder` script should be added to this prefab
@@ -29,7 +29,12 @@ Currently, annotating map is only recommended while running the simulator as a U
           - `MapSignal` - A single annotated traffic signal
           - `MapSign` - A single annotated traffic sign (e.g. a stop sign)
       - `BoundaryLines` - This object will hold all of boundary lines
-        
+- More notes on `HD Map Annotation` window:
+    - Under `Utilities`, there are three Utility buttons
+        - `Snap all` which will snap all your annotations to ground layer.
+        - `Remove lines` which will remove all extra boundary lines in the map annotations. If two boundary lines' end points are both overlapping, one of the lines will be removed and the other will be shared.
+        - `Create lines` which will create fake boundary lines for all lanes which miss boundary lines using fixed width. To quick annotate a map, you can first annotate lanes, click this button to create boundary lines, and then adjust them.
+    - Under `Create Intersection / Lane Section Holder`, there are two buttons `Intersection` and `Lane Section` to create these two objects quickly and attach the corresponding scripts.
 
 [![](images/annotation-mapToolPanel.png)](images/annotation-mapToolPanel.png)
 
@@ -47,17 +52,18 @@ Currently, annotating map is only recommended while running the simulator as a U
 #### Create Parent Object [[top]] {: #create-parent-object-lanes data-toc-label='Create Parent Object'}
 [![](images/annotation-mapLaneSection.png)](images/full_size_images/annotation-mapLaneSection.png)
 
-- In the `Map` prefab (if you don't have one, you can create an empty GameObject and make it a prefab), create a new object and name it "TrafficLanes"
+- In the `Map` prefab (if you don't have one, you can create an empty GameObject, attaching `MapHolder` script and make it a prefab), create a new object and name it "TrafficLanes"
 - In the Inspector of the `Map`, drag the new `TrafficLanes` object into the `Traffic Lanes holder`
 - In `TrafficLanes`, create a new object
-- Add the `MapLaneSection` script to the object and position it close the section of road that will be annotated
+    - Add the `MapLaneSection` script to the object and position it close the section of road that will be annotated
+    - You can also create a `MapLaneSection` object using the `Lane Section` button in `HD Map Annotation` window.
     - `MapLaneSection` script is needed for sections that contain more than 1 lane. For sections with only 1 lane, they can be left as a child object of the TrafficLanes object or grouped with the boundary lines under a different parent object without the `MapLaneSection` script.
-- Each `MapLaneSection` will contain parallel lanes section 
-    - 1 `MapLane` per lane of road as well as 1 `MapLine` per boundary line (optional)
+- Each `MapLaneSection` will contain parallel lanes with similar lengths
+    - 1 `MapLane` per lane of road as well as 1 `MapLine` per boundary line (optional, you can use the utility button `Create lines` to generate fake boundary lines)
     - If the annotations will be broken up into multiple `MapLane` (e.g. a straight section and a curved section), multiple `MapLaneSection` are required
-    - A `MapLane` cannot begin or end in the middle of another `MapLane` (e.g. a lane splits or merges). This situation would require a 2nd `MapLaneSection` to be created where the split/merge begins. 
+    - A `MapLane` cannot begin or end in the middle of another `MapLane` (e.g. a lane splits or merges). This situation would require a 2nd `MapLaneSection` to be created where the split/merge begins.
     - The other lanes on the road will also need to be broken up into multiple `MapLane` to be included in the multiple `MapLaneSection`
-- `MapLaneSection` is used to automate the computation of relation of neighboring lanes. Please make sure every lane under `MapLaneSection` has at least 3 waypoints.
+    - `MapLaneSection` is used to automate the computation of relation of neighboring lanes. Please make sure every lane under `MapLaneSection` has at least 3 waypoints.
 
 
 [![](images/annotation-laneSplit.png)](images/full_size_images/annotation-laneSplit.png)
@@ -66,7 +72,7 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 
 #### Make Lanes [[top]] {: #make-lanes data-toc-label='Make Lanes'}
 - Select the `Lane/Line` option under `Create Mode`
-  - A large yellow `TARGET_WAYPOINT`  will appear in the center of the scene. This is where the `TEMP_WAYPOINT` objects will be placed
+  - A large yellow `TARGET_WAYPOINT`  will appear in the center of the scene. This is where the `TEMP_WAYPOINT` objects will be placed. The `TARGET_WAYPOINT` will not appear if your roads had no mesh collider attached.
 - Drag in the appropriate `MapLaneSection` to be the `Parent Object`
 - Click `Waypoint` button to create a new `TEMP_WAYPOINT`. This is where the lane will begin
 
@@ -76,11 +82,11 @@ Example of single lane splitting into a right-turn only lane and a straight lane
     - With 2 waypoints, the `Create Straight` function will connect the waypoints and use the number in `Waypoint Count` to determine how many waypoints to add in between
     - More than 2 waypoints can be used with the `Create Straight` function and they will be connected in the order they were created, and the `Waypoint Count` value will not be used
     - With 3 waypoints, the `Create Curve` function can be used to create a Bezier curve between the 1st and 3rd waypoints and the `Waypoint Count` value will be used to deterin how many waypoints to add in between 
- 
+
 [![](images/annotation-createEndWaypoint.png)](images/full_size_images/annotation-createEndWaypoint.png)
 
 - Verify `Lane` is the selected `Map Object Type`
-- Verify `NO_TURN` is the selected `Lane Turn Type`
+- Verify the selected `Lane Turn Type` is correct
 - Select the appropriate lane boundry types
 - Enter the speed limit of the lane (in m/s)
 - Enter the desired number of waypoints in the lane (minimum 2 for a straight lane and 3 for a curved lane) 
@@ -89,12 +95,16 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 [![](images/annotation-createLane.png)](images/full_size_images/annotation-createLane.png)
 
 - To adjust the positions of the waypoints, with the `MapLane` selected, in the Inspector check `Display Handles`. Individual waypoints can now have their position adjusted
+    - You can also show each waypoint's handle by clicking `Toggle Handles` button in `HD Map Annotation` window
+    - Below you can also find a group of helper buttons to manipulate the lane's waypoints
+
+[![](images/annotation-mapLaneInspector.png)](images/annotation-mapLaneInspector.png)
 
 #### Make Boundary Lines [[top]] {: #make-boundary-lines data-toc-label='Make Boundary Lines'}
 - Drag in the appropriate `MapLaneSection` to be the `Parent Object`
 - The same process as for lanes can be used to create boundary lines, but the `Map Object Type` will be `BoundaryLine`
 - It is better to have the direction of a boundary line match the direction of the lane if possible
-- If you are annotating map for Lanelet2 format, you also need to annotate boundary lines for every lane and drag them into the corresponding field in the lane object.
+- For every boundary line, you also need to drag it into the corresponding field in the lane object.
 
 
 ## Annotate Intersections [[top]] {: #annotate-intersections data-toc-label='Annotate Intersections'}
@@ -102,8 +112,9 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 - In the `Map` prefab, create a new object and name it "Intersections"
 - In the Inspector of the `Map`, drag the new `Intersections` object into the `Intersections holder`
 - In `Intersections`, create a new object
-- Add the `MapIntersection` script to the new object and position it in the center of the intersection that will be annotated.
-    - Adjust the `Trigger Bounds` of the `MapIntersection` so that the box covers the center of the intersection
+    - Add the `MapIntersection` script to the new object and position it in the center of the intersection that will be annotated
+    - You can also create an `MapIntersection` object using the `Intersection` button in `HD Map Annotation` window
+    - You need to adjust the `Trigger Bounds` of the `MapIntersection` so that the box covers the space of the intersection
 - The `MapIntersection` will contain all lanes, traffic signals, stop lines, and traffic signs in the intersection
 
 [![](images/annotation-intersectionBounds.png)](images/full_size_images/annotation-intersectionBounds.png)
@@ -113,9 +124,9 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 - Drag in the `MapIntersection` as the `Parent Object`
 - The same process for creating normal `MapLane` is used here
 - If the Lane involves changing directions, verify the correct `Lane Turn Type` is selected
-- If you are annotating for Lanelet2, you also need to annotate boundary lines for each lane, remember to set `VIRTUAL` as the `Line Type` for the line objects
+- If you are annotating boundary lines for each lane, remember to set `VIRTUAL` as the `Line Type` for the line objects
 - If there is a stop line in the intersection, the start of the intersection lanes should be after the stop line
-- For NPCs to properly navigate an intersection, the `Yield To Lanes` list must be manually filled in. With `View Selected` toggled in the Map Annotation Tool, the lanes in the `Yield To Lanes` list will be highlighted in yellow to make it easier to verify that the correct lanes are in the list. Before an NPC enters an intersection lane, it will check that there are no NPCs on the lanes in the `Yield To Lanes` before continuing.
+- For NPCs to properly navigate an intersection, the `Yield To Lanes` list of a lane (usually a turning lane) must be manually filled in. With `View Selected` toggled in the `HD Map Annotation` window, the lanes in the `Yield To Lanes` list will be highlighted in yellow to make it easier to verify that the correct lanes are in the list. Before an NPC enters an intersection lane, it will check that there are no NPCs on the lanes in the `Yield To Lanes` before continuing.
     - Enter the number of lanes that the current lanes yields to as the size of `Yield To Lanes`
     - For each element in the list, drag in a lane that takes priority over the selected lane
         - For example, generally when turning left the NPC will yield to the oncoming traffic going straight so the straight lanes should be in the left turn lane's `Yield To Lanes` list
@@ -126,7 +137,7 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 - Select the `Signal` option under `Create Mode`
 - Drag in the `MapIntersection` as the `Parent Object`
 - Select the correct `Signal Type`
-- Traffic Signals are created on top of existing meshes. The annotation directions must match the directions of the mesh. 
+- Traffic Signals are created on top of existing meshes. The signal annotation directions will be the same as the directions of the mesh. Please make sure the directions of the mesh is correct.
 
 [![](images/annotation-signalMesh.png)](images/full_size_images/annotation-signalMesh.png)
 
@@ -160,8 +171,8 @@ Example of single lane splitting into a right-turn only lane and a straight lane
 - A similar process to boundary lines and traffic lanes is used for stop lines
 - Change the `Map Object Type` to `StopLine`
 - `Forward Right` vs `Forward Left` depend on the direction of the lane related to this stopline and the order that the waypoints were created in. The "Forward" direction should match the direction of the lane
-    - Example: In a right-hand drive map (cars are on the right side of the road), if the waypoints are created from the outside of the road inwards, then `Forward Right` should be selected. To verify if the correct direction was selected, `Toggle Tool Handle Rotation` so that the tool handles are in the active object's rotation. The Z-axis of the selected Stop Line should be in the same direction as the lanes. 
-- A `StopLine` needs to with the lanes that approch it. The last waypoint of approaching lanes should be past the line.
+    - Example: In a right-hand drive map (cars are on the right side of the road), if the waypoints are created from the outside of the road inwards, then `Forward Right` should be selected. To verify if the correct direction was selected, `Toggle Tool Handle Rotation` so that the tool handles are in the active object's rotation. The Z-axis of the selected Stop Line should point to the intersection.
+- A `StopLine` needs to be with the lanes that approach it. The last waypoint of approaching lanes should be past the line.
 
 [![](images/annotation-stopLine.png)](images/full_size_images/annotation-stopLine.png)
 
@@ -213,13 +224,13 @@ There are TrafficLanes and Intersections objects. TrafficLanes object is for str
 [![](images/annotation-self_reverse_lane-mapIntersection.png)](images/full_size_images/annotation-self_reverse_lane-mapIntersection.png)
 
 - Add MapIntersection game object under Intersections. MapIntersection has several pair of lanes.
-- Annotate lane given name to MapLane1\_forward move it under MapIntersection.
+- Annotate lane given name to MapLane\_forward move it under MapIntersection.
     - Use curve connect menu with way point count, 5.
-- Duplicate the MapLane1\_forward and rename it to MapLane1_reverse.
+- Duplicate the MapLane\_forward and rename it to MapLane1_reverse.
 - Choose MapLane\_reverse and click Reverse Lane.
     - Reverse Lane will have way points in reverse order and make tweak to each way point.
     - Routing module doesn't work right when forward and reverse lane have same way point coordinates.
-- Choose both lanes (MapLane1\_forward, MapLane1\_reverse) and change properties like the following:
+- Choose both lanes (MapLane\_forward, MapLane\_reverse) and change properties like the following:
     - Is Self Reverse Lane: True
     - Left Bound Type: DOTTED\_WHITE
     - Right Bound Type: DOTTED\_WHITE
@@ -231,7 +242,7 @@ There are TrafficLanes and Intersections objects. TrafficLanes object is for str
     - As for reverse lane, you can do the same way.
 
 ## Annotate Other Features [[top]] {: #annotate-other-features data-toc-label='Annotate Other Features'}
-Other annotation features may be included in the `TrafficLane` or `Intersection` objects or they may be sorted into other parent objects.
+Other annotation features may be included in the `TrafficLanes` or `Intersections` objects or they may be sorted into other parent objects.
 
 #### Create Pedestrian Path [[top]] {: #create-pedestrian-path data-toc-label='Create Pedestrian Path'}
 This annotation controls where pedestrians will pass with the highest priority. Pedestrians can walk anywhere but will stay on annotated areas if possible.
@@ -247,7 +258,7 @@ This annotation controls where pedestrians will pass with the highest priority. 
 [![](images/annotation-pedestrian.png)](images/full_size_images/annotation-pedestrian.png)
 
 #### Create Junction [[top]] {: #create-junction data-toc-label='Create Junction'}
-Junction annotations can be used by the AD stack if needed.
+Junction annotations need to be annotated for Apollo 5.0 for Map Exporter to work correctly. It converts the boundary of the intersection.
 
 - Select the `Junction` option under `Create Mode`
 - Drag in the desired `Parent Object`
@@ -322,12 +333,13 @@ To export a map:
 - Select the desired format from the dropdown `Export Format`
 - Enter the desired save location of the exported map
 - Click `Export` to create the exported map
+- Note the exporter will fail if any lane has no boundary lines annotated - you need to either manually annotate them or use the `Create lines` button in `HD Map Annotation` window to create fake boundary lines.
 
 ## Import Map Annotations [[top]] {: #import-map-annotations data-toc-label='Import Map Annotations'}
 [![](images/annotation-import.png)](images/full_size_images/annotation-import.png)
 
 The simulator can import a variety of formats of annotated map. Current supported formats are:
- 
+
  * Lanelet2 Map
  * Apollo 5.0 HD Map
  * OpenDRIVE Map
@@ -338,6 +350,7 @@ To import a map:
 - Select the format of the input map from the dropdown `Import Format`
 - Select the file or folder that will be imported
 - Click `Import` to import the map annotations into the simulator
+- `Distance Threshold` is used to downsample straight lines/lanes and `Delta Threshold` is used to downsample curved lines/lanes. Changing both of them to `0` will keep all points, but for large maps displaying all annotations may lead to Unity crash.
 
 Lanelet2 map importer Notes:
 
