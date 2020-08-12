@@ -94,9 +94,12 @@ Settings visible for renderer depend on currently selected rendering mode. Irrel
 #### Solid Rendering Mode
 Cascades options for Remove Hidden and Smooth Normals stages affect filter window size for both these effects and its scaling with distance for camera. They can be visualized by toggling `Show Preview` option on.
 
+Cascade options for Remove Hidden stage will only be visible if `Hidden Point Removal` option is set to `Screen Space`. For `Depth Prepass`, they will be replaced with [point rendering settings](#pointcones-rendering-settings).
+
 |Parameter Name|Type|Description|
 |:-:|:-:|:-:|
 |Lighting Mode|enum|Determines how light will affect the point cloud. Available modes: `Unlit` (no lighting, no shadows), `Shadow Receiver` (no lighting, receives shadows), `Full Deferred` (receives lighting and shadows)|
+|Hidden Point Removal|enum|Method used for removing obscured points. `Screen Space` is the default, faster option. `Depth Prepass` reduces flickering on edges, but requires more precise setup and can have impact on performance.|
 |Calculate Normals|bool|If enabled, normals approximation stage will be performed and world-space normals will be available. Required for lighting.|
 |Smooth Normals|bool|If enabled, additional normals smoothing stage will be performed to reduce noise. Results will replace normals data from `Calculate Normals` option.|
 |FoV Reprojection|bool|If enabled, wider image of point cloud will be rendered internally and it will be reprojected to desired camera FOV. This option reduces artifacts near the edges of the image. Does not affect final FOV.|
