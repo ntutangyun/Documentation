@@ -79,7 +79,8 @@ nav:
   - 'Adding a new map': 'add-new-map.md'
   - 'Adding a new ego vehicle': 'add-new-ego-vehicle.md'
   - 'NPC map navigation': 'npc-map-navigation.md'
-  - 'Plugins': 
+  - 'Setting up ROS 2 bridge': 'ros2-bridge.md'
+  - 'Plugins':
     - 'Sensor plugins': 'sensor-plugins.md'
     - 'Bridge plugins': 'bridge-plugins.md'
     - 'Lidar sensor plugin': 'lidar-plugin.md'

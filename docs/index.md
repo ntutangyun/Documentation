@@ -63,6 +63,7 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * [Adding a new map](add-new-map.md)
 * [Adding a new ego vehicle](add-new-ego-vehicle.md)
 * [NPC map navigation](npc-map-navigation.md)
+* [Setting up ROS 2 bridge](ros2-bridge.md)
 * Plugins
 	* [Sensor plugins](sensor-plugins.md)
 	* [LiDAR plugin](lidar-plugin.md)
