@@ -1,6 +1,8 @@
 # Running latest Apollo with LGSVL Simulator [](#top)
 
-This instruction is tested after [the last commit](https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5) enabling LGSVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed.
+This instruction is tested after [the last commit](https://github.com/ApolloAuto/apollo/commit/eac672b11ae20272f6d91f8eb119bfb942364ef5) enabling LGSVL Simulator with latest Apollo master. Commits after that are assumed to work as well, but not guaranteed. 
+
+Big changes have recently been introduced in Apollo master; camera perception may not be working yet, and LiDAR perception is recently able to build but still unstable (and uses a lot of GPU memory making it challenging for Apollo to share an 8GB GPU with the LGSVL Simulator).
 
 **For those who used our fork of Apollo 5.0 before: please note the new step to select the correct setup mode in Dreamview**.
 
@@ -92,15 +94,7 @@ Build Apollo (optimized, not debug, with GPU support):
 **NOTE**
 The Apollo build may fail on machines with less than 1GB of RAM per CPU core due to aggressive parallelization in the build, as discussed in [Apollo issue 7719](https://github.com/ApolloAuto/apollo/issues/7719).
 
-If the build fails, either re-start it until it succeeds, or try changing line ~141 of `function build()` in `apollo.sh` as follows:
-
-Replace this:
-   `JOB_ARG="--jobs=$(nproc) --ram_utilization_factor 80"`
-
-With this, which will use all but two cores for the build:
-   `JOB_ARG="--jobs=$(expr $(nproc) - 2 ) --ram_utilization_factor 70"`
-
-Alternatively, you can analyze `top` while building, and decide how many jobs to enable to avoid running out of memory; then set a specific value in `JOB_ARG`, e.g. `--jobs=6`.
+If the build fails, either re-start it until it succeeds, but if it continues to fail (especially when running the linker) then you'll need to address the low memory situation by either adding more memory to your build machine or enabling or [increasing available swap space](https://bogdancornianu.com/change-swap-size-in-ubuntu/). If your Apollo build is crashing on a 16GB machine with little or no swap, try setting it to 16GB.
 
 
 ## Launching Apollo alongside the Simulator [[top]] {: #launching-apollo-alongide-the-simulator data-toc-label='Launching Apollo alongisde the Simulator'}
