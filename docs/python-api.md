@@ -633,7 +633,7 @@ Simulator class offers following helper functions:
  * `get_spawn` - method that returns list of transforms representing good positions where to place
    vehicles in the map. This list can be empty, it depends on how the map is prepared in Unity. Returned
    transforms contain `position` and `rotation` members as a `Vector`
- * `get_agents` - method that returns a list of currently available agent objets added with `add_agent`
+ * `get_agents` - method that returns a list of currently available agent objects added with `add_agent`
 
 To map points in Unity coordinates to GPS coordinates the Simulator class offers the following two functions:
 
@@ -682,10 +682,4 @@ collision with. It corressponds to layers in the Unity project - check the proje
 * 2019-04-19
 	* initial release
 
-
-## Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.
 

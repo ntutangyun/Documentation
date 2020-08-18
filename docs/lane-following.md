@@ -291,8 +291,4 @@ Though the network can successfully drive and follow lanes on the bridge, there'
 - [LGSVL Simulator](https://www.lgsvlsimulator.com/)
 - [NVIDIA's End-to-End Deep Learning Model for Self-Driving Cars](https://devblogs.nvidia.com/deep-learning-self-driving-cars/)
 
-## Copyright and License
 
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

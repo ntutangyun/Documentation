@@ -18,8 +18,4 @@ For more details about the cluster, simulations refer to the [Cluster Simulation
 
 [![](images/web-edit-cluster.png)](images/full_size_images/web-edit-cluster.png)
 
-## Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
 
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

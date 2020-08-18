@@ -119,9 +119,3 @@ Full Model Interface supports [FMI2.0 Functional Mock-up Interface](https://gith
 When LGSVL Simulator loads a vehicle bundle with an FMU included, it saves the fmu.dll to a folder in Unity's persistent data folder.  This folder is contained in the hidden folder AppData in Windows.  Here it is loaded by the FMU class, loaded and passed to ExampleVehicleFMU class.  Then ExampleVehicleFMU class can call FMU specific methods in the dll.  Config.cs will hold references all opened dll's so LGSVL Simulator will not try to open it multiple times.  Currently, LGSVL Simulator only supports one FMU in Windows only.
 
 
-
-## Copyright and License
-
-Copyright (c) 2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

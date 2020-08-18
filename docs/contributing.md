@@ -40,10 +40,3 @@ We currently use [mkdocs](https://www.mkdocs.org/) version 1.0.4 to build our [d
 If you are using the LGSVL Simulator for your development, we would like to hear from you. We are also always excited to see any demonstration videos, blog posts, or articles showing use cases for the LGSVL Simulator. Please reach out to us at [contact@lgsvlsimulator.com](mailto:contact@lgsvlsimulator.com) to let us know about your application.
 
 
-
-## Copyright and License
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.
-

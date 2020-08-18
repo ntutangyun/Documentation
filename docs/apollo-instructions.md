@@ -162,8 +162,3 @@ The default vehicles have their calibration files included in the [LGSVL Branch 
 The default maps have their HD map files included in the [LGSVL Branch of Apollo 5.0](https://github.com/lgsvl/apollo/).
 
 
-## Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

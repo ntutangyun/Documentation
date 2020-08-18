@@ -315,8 +315,4 @@ ros2 run {your_package} {your_node}
 - [ROS2 Documentation](https://index.ros.org/doc/ros2/)
 - [ROS2 Message Filters](https://github.com/intel/ros2_message_filters)
 
-## Copyright and License
 
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.

@@ -99,8 +99,3 @@ By default the ego vehicle will only use the front facing camera. The ego vehicl
 The NPCs are defined in `_setup_npc`. The NPCs are spawned randomly around the ego vehicle spawn point and will follow the lanes and traffic rules to move around.
 
 
-## Copyright and License
-
-Copyright (c) 2019-2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.
