@@ -1,4 +1,4 @@
-# Autoware.AI 1.12.0 with LGSVL Simulator [](#top)
+# Autoware.AI 1.14.0 with LGSVL Simulator [](#top)
 
 **The software and source code in this repository are intended only for use with the LGSVL simulator and *should not* be used in a real vehicle.**
 
@@ -86,38 +86,26 @@ cd $WORKING_DIRECTORY
 git clone https://github.com/Autoware-AI/docker.git
 ```
 
-If you are using the latest Docker and NVIDIA Container Toolkit, the `docker/generic/run.sh` script will need to be modified. To determine whether you need to do this run `type nvidia-docker` in a terminal. If you get output similar to: `nvidia-docker is /usr/bin/nvidia-docker`, the script will work as is. If not, then modify it as described below:
-
-- In `docker/generic/run.sh`, find the following block at line 139:
-
-```bash
-if [ $CUDA == "on" ]; then
-    SUFFIX=$SUFFIX"-cuda"
-    RUNTIME="--runtime=nvidia"
-fi
-```
-
-- Replace it with:
-
-```bash
-DOCKER_VERSION=$(docker version --format '{{.Client.Version}}' | cut -d'.' -f1)
-if [ $CUDA == "on" ]; then
-    SUFFIX=$SUFFIX"-cuda"
-    if [[ $DOCKER_VERSION -ge "19" ]] && ! type nvidia-docker; then
-        RUNTIME="--gpus all"
-    else
-        RUNTIME="--runtime=nvidia"
-    fi
-fi
-```
-
 ## Launch Autoware Alongside LGSVL Simulator [[top]] {: #launch-autoware-alongside-lgsvl-simulator data-toc-label='Launch Autoware Alongside LGSVL Simulator'}
 
-Run the Autoware 1.12.0 container and enter into it:
+Run the Autoware 1.14.0 container and enter into it:
 
 ```bash
 cd $WORKING_DIRECTORY/docker/generic
-./run.sh -t 1.12.0
+./run.sh -t 1.14.0
+```
+If you get the usermod error as follows:
+```
+usermod: user autoware is currently used by process 1
+```
+Check if the $UID is 1000
+```
+$ echo $UID
+```
+If your $UID is 1000, you would not have usermod error. Otherwise, it's better to build container locally to avoid usermod error as follows:
+```
+$ ./build.sh --version 1.14.0
+$ ./run.sh -t local
 ```
 
 Once inside the container, install a missing ROS package:
@@ -144,6 +132,7 @@ A few terminals will open, as well as a GUI for the runtime manager. In the runt
 - `my_localization.launch`
 - `my_detection.launch`
 - `my_mission_planning.launch`
+- `my_motion_planning.launch`
 
 [![](images/autoware-runtime-manager.png)](images/autoware-runtime-manager.png)
 
@@ -165,33 +154,16 @@ The vehicle may be mis-localized as the initial pose is important for NDT matchi
 [![](images/autoware-ndt-matching.png)](images/autoware-ndt-matching.png)
 
 
-An alternative would be to use GNSS for an inital pose or for localization but the current Autoware release (1.12.0) does not support GNSS coordinates outside of Japan. Fix for this is available in following pull requests: [utilities#27](https://gitlab.com/autowarefoundation/autoware.ai/utilities/merge_requests/27), [common#20](https://gitlab.com/autowarefoundation/autoware.ai/common/merge_requests/20), [core_perception#26](https://gitlab.com/autowarefoundation/autoware.ai/core_perception/merge_requests/26) These are not yet merged in Autoware master.
+An alternative would be to use GNSS for an initial pose or for localization. Open my_localization.launch file in map folder of autoware-data repository and uncomment nmea2tfpose part and comment ndt_matching instead.
 
 ### Driving by following vector map:
 To drive following the HD map follow these steps:
-- in rviz, mark a destination by clicking '2D Nav Goal' and clicking at the destination and dragging along the road direction. Make sure to only choose a route that looks valid along the lane centerlines that are marked with orange lines in rviz. If an invalid destination is selected nothing will change in rviz, and you will need to relaunch the `Mission Planning` launch file in the `Quick Launch` tab to try another destination.
+- in rviz, mark a destination by clicking '2D Nav Goal' and clicking at the destination and dragging along the road direction. Make sure to only choose a route that looks valid along the lane centerlines that are marked with orange lines in rviz. If an invalid destination is selected nothing will change in rviz, and you will need to relaunch the `Mission Planning` and `Motion Planning` launch files in the `Quick Launch` tab to try another destination.
 After choosing a valid destination the route will be highlighted in blue in rviz.
 
 [![](images/autoware-valid-route.png)](images/autoware-valid-route.png)
 
-To follow the selected route launch these nodes:
-- Enable `lane_rule`, `lane_stop`, and `lane_select` to follow traffic rules based on the vector map.
-- Enable `astar_avoid` and `velocity_set`.
-- Enable `pure_pursuit` and `twist_filter` to start driving.
-
-### Driving by following prerecorded waypoints:
-A basic functionality of Autoware is to follow a prerecorded map while obeying traffic rules. To do this you will need to record a route first. Switch to the `Computing` tab and check the box for `waypoint_saver`. Make sure to select an appropriate location and file name by clicking on the `app` button.
-
-Now you can drive around the map using the keyboard. Once you are satisfied with your route, uncheck the box for `waypoint_saver` to end the route.
-
-To drive the route using Autoware:
-
-- Enable `waypoint_loader` while making sure the correct route file is selected in the `app` settings.
-- Enable `lane_rule`, `lane_stop`, and `lane_select` to follow traffic rules based on the vector map.
-- Enable `astar_avoid` and `velocity_set`.
-- Enable `pure_pursuit` and `twist_filter` to start driving.
-
-The ego vehicle should try to follow the waypoints at the velocity which they were originally recorded at. You can modify this velocity by manually editing the values csv file.
+In Mission Planning launch file, waypoint_planner runs as global planner, dp_planner does as local planner. In Motion Planning launch file, pure_pursuit runs as controller.
 
 ### Adding a Vehicle [[top]] {: #adding-a-vehicle data-toc-label='Adding a Vehicle'}
 The default vehicles have the calibration files included in the [LGSVL Autoware Data](https://github.com/lgsvl/autoware-data) Github repository.
