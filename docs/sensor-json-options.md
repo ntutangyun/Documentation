@@ -112,7 +112,7 @@ This is the type of sensor that would be used for the `Main Camera` in Apollo.
 |`DistortionParameters`|parameters used by distortion *||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
 |`Xi`|parameter used by fisheye distortion **||Float|0.0|||
-|`Cubemap Size`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
+|`CubemapSize`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
 
 \* If `Distorted` is `true`, `DistortionParameters` must be an empty list or a list of FOUR floats. 
 The values in this list should come from calibration result of real camera. Setting arbitrary values may cause undefined result. 
@@ -121,7 +121,7 @@ If `Distorted` is `false`, `DistortionParameters`, `Fisheye` and `Xi` are ignore
 \*\* If `Fisheye` is `true`, `Xi` should be a value from calibration result of real camera. Setting arbitrary value may cause undefined result.
 If `Fisheye` is `false`, `Xi` is ignored.
 
-\*\*\* `Cubemap Size` should only be 512, 1024, or 2048.
+\*\*\* `CubemapSize` should only be 512, 1024, or 2048.
 
 ```JSON
 {
@@ -169,13 +169,13 @@ This sensor returns an image where the shades on the grey-scale correspond to th
 |`DistortionParameters`|parameters used by distortion*||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
 |`Xi`|parameter used by fisheye distortion **||Float|0.0|||
-|`Cubemap Size`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
+|`CubemapSize`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
 
 \* See notes on `DistortionParameters` for Color Camera.
 
 \*\* See notes on `Xi` for Color Camera.
 
-\*\*\* See notes on `Cubemap Size` for Color Camera.
+\*\*\* See notes on `CubemapSize` for Color Camera.
 
 ```JSON
 {
@@ -234,14 +234,14 @@ is colored differently, but all will have same hue (e.g. all cars will be bluish
 |`DistortionParameters`|parameters used by distortion*||List of Float|empty list|||
 |`Fisheye`|defines if the camera has fisheye lens||Bool|`false`|||
 |`Xi`|parameter used by fisheye distortion **||Float|0.0|||
-|`Cubemap Size`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
+|`CubemapSize`|size of the cubemap used by fisheye distortion ***|pixels|Int|1024|512|2048|
 |`InstanceSegmentationTags`|define tags with instance segmentation||List of String|empty list|||
 
 \* See notes on `DistortionParameters` for Color Camera.
 
 \*\* See notes on `Xi` for Color Camera.
 
-\*\*\* See notes on `Cubemap Size` for Color Camera.
+\*\*\* See notes on `CubemapSize` for Color Camera.
 
 ```JSON
 {
