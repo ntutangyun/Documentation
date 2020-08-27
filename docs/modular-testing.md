@@ -98,11 +98,11 @@ The following sensor parameters can be added to a vehicle sensor configuration (
 ```
 
 
-## How to run Apollo modular testing on *GoMentumDTL* map
+## How to run Apollo modular testing on *BorregasAve* map
 
 - Configure and run simulator
     - Map
-        - Choose *GoMentumDTL* map
+        - Choose *BorregasAve* map
     - Vehicle
         - Choose *Lincoln2017MKZ* vehicle for Apollo
         - Attach `3D Ground Truth sensor` and `Signal sensor` with the sensor parameters above
@@ -114,7 +114,7 @@ The following sensor parameters can be added to a vehicle sensor configuration (
         - Topic for traffic light detection: **/apollo/perception/traffic_light**
         - `cyber_monitor` for *CyberRT bridge* or `rostopic echo` for *ROS Apollo bridge*
     - In Dreamview, enable `Localization` module and verify if you can visually see that
-        - your EGO vehicle is placed on the right position on the Apollo HD map for GoMentumDTL
+        - your EGO vehicle is placed on the right position on the Apollo HD map for BorregasAve
         - bounding boxes for vehicles and pedestrians around the EGO vehicle (if any) including heading and velocity vectors
         - traffic light signals that are connected to the current lane of EGO vehicle are detected
     - Enable `Transform`, `Prediction`, `Planning`, `Routing`, and `Control`
