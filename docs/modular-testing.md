@@ -3,8 +3,9 @@
 Our `3D Ground Truth sensor` and `Signal sensor` now publish ground truth perception data to Apollo stack via CyberRT bridge or ROS Apollo bridge. The modular testing feature is useful for testing planning module of Apollo stack based on the assumption that the perception output is 100% accurate without any errors. In other words, we can completely bypass Apollo's perception modules (i.e., object detection and traffic light detection) and use ground truth labels for perception published by our simulator instead.
 
 <div class="video-container">
-    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/xW3d1zbmMyo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/Sr-OGw3aGKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<br>
 
 ## Sensor Specifications
 
@@ -53,6 +54,49 @@ Sensor parameters:
 - Frequency: 10
 - MaxDistance: 100
 - Topic: **/apollo/perception/traffic_light**
+
+
+### Sensor JSON
+
+The following sensor parameters can be added to a vehicle sensor configuration (and can replace the lidar and camera sensors which will improve simulation performance). Refer to [Vehicles in My Library](my-library.md#vehicles) for more information on vehicle sensor configuration.
+
+```JSON
+  {
+    "type": "3D Ground Truth",
+    "name": "3D Ground Truth",
+    "params": {
+      "Frequency": 10,
+      "MaxDistance": 100,
+      "Topic": "/apollo/perception/obstacles"
+    },
+    "transform": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "pitch": 0,
+      "yaw": 0,
+      "roll": 0
+    }
+  },
+  {
+    "type": "Signal",
+    "name": "Signal Sensor",
+    "params": {
+      "Frequency": 10,
+      "MaxDistance": 100,
+      "Topic": "/apollo/perception/traffic_light"
+    },
+    "transform": {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "pitch": 0,
+      "yaw": 0,
+      "roll": 0
+    }
+  }
+```
+
 
 ## How to run Apollo modular testing on *GoMentumDTL* map
 
