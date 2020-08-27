@@ -58,7 +58,7 @@ Sensor parameters:
 
 ### Sensor JSON
 
-The following sensor parameters can be added to a vehicle sensor configuration (and can replace the lidar and camera sensors which will improve simulation performance). Refer to [Vehicles in My Library](my-library.md#vehicles) for more information on vehicle sensor configuration.
+The following sensor parameters can be added to a vehicle sensor configuration (and can replace the lidar and camera sensors which will improve simulation performance). Refer to [How to Change the Configuration of a Vehicle](vehicles-tab.md#how-to-change-the-configuration-of-a-vehicle) for more information on vehicle sensor configuration.
 
 ```JSON
   {
