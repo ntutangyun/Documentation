@@ -55,46 +55,87 @@ To install Docker CE please refer to the [official documentation](https://docs.
 
 ### Simulator installation [[top]] {: #simulator-installation data-toc-label='Simulator Installation'}
 
-- Download and extract the latest [simulator release](https://github.com/lgsvl/simulator/releases/latest)
+- Download and extract the latest [simulator release](https://github.com/lgsvl/simulator/releases/latest) under the ~/adehome folder.
 - (Optional) Download the latest [PythonAPI release](https://github.com/lgsvl/PythonAPI/releases/latest) (make sure the release version matches the simulator) and install it using pip:
 
 ```bash
 cd PythonAPI
 pip3 install --user .
 ```
-
-### Install ROS2 dashing [[top]] {: #install-ros2-dashing data-toc-label='Install Ros2 dashing'}
-
-- Follow [these steps](https://index.ros.org/doc/ros2/Installation/Dashing/Linux-Install-Debians).
-
-### Install the ROS2 Web Bridge [[top]] {: #install-ros2-web-bridge data-toc-label='Install Ros2 Web Bridge'}
-
-###### Clone the [ROS2 web bridge](https://github.com/RobotWebTools/ros2-web-bridge)
-
+### Install ROS2 LGSVL Bridge [[top]] {: #install-ros2-lgsvl-bridge data-toc-label='Install ROS2 LGSVL Bridge'}
+###### Downloading
 ```bash
-cd ~/adehome/AutowareAuto
-ade start -- --net=host --privileged # to allow connect to rosbridge
-ade enter
-git clone -b 0.2.7 https://github.com/RobotWebTools/ros2-web-bridge.git
+cd adehome
+git clone https://github.com/lgsvl/ros2-lgsvl-bridge.git
+```
+###### Building
+Refer to README.md in the repo.
+```bash
+cd ros2-lgsvl-bridge
+colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
+```
+###### Running {: #lgsvl-bridge-running}
+Refer to README.md in the repo.
+```bash
+source ~/ros2-lgsvl-bridge/install/setup.bash
+lgsvl_bridge
 ```
 
-###### Install nodejs v10 {: #node-js}
-
+### Install ROS2 LGSVL Messages [[top]] {: #install-ros2-lgsvl-messages data-toc-label='Install ROS2 LGSVL Messages'}
+###### Downloading
 ```bash
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install -y nodejs
-cd ros2-web-bridge
-npm install    # If node.js packages are not installed, run this.
+mkdir mkdir -p ~/adehome/AutowareAuto/src/external/lgsvl_msgs
+cd ~/adehome/AutowareAuto/src/external/lgsvl_msg
+git clone https://github.com/lgsvl/lgsvl_msgs.git
+```
+###### Building
+```bash
+# In the ade container
+cd ~/AutowareAuto
+colcon build --cmake-args '-DCMAKE_BUILD_TYPE=Release'
+# You may want to build only lgsvl_msgs package with the following command.
+colcon build --packages-select lgsvl_msgs --cmake-args '-DCMAKE_BUILD_TYPE=Release'
+```
+###### Testing
+```bash
+cd ~/AutowareAuto
+source install/setup.bash
+ros2 msg list |grep lgsvl_msgs
+# If you can see the list of lgsvl_msgs, they're ready to be used.
 ```
 
 ## Run Simulator alongside Autoware.Auto [[top]] {: #run-simulator-alongside-autoware-auto data-toc-label='Run Simulator alongside Autoware.Auto'}
 The ROS2 web bridge allows the simulator and Autoware.auto to communicate. To test this connection we can visualize sensor data from the simulator in rviz2 (running in the Autoware.auto container).
 
-- Start the Autoware.Auto containers:
+- Start the Autoware.Auto containers without NVIDIA setup:
 
 ```bash
 cd ~/adehome/AutowareAuto
-ade start -- --net=host --privileged # to allow connect to rosbridge
+source .aderc
+ade start
+```
+
+- Start the Autoware.Auto containers with NVIDIA setup:
+- ~/adehome/AutowareAuto/.aderc-nvidia:
+
+```bash
+export ADE_DOCKER_RUN_ARGS="--cap-add=SYS_PTRACE --net=host --privileged --add-host ade:127.0.0.1 -e RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+-e NVIDIA_VISIBLE_DEVICES=all \
+-e NVIDIA_DRIVER_CAPABILITIES=compute,utility,display"
+export ADE_GITLAB=gitlab.com
+export ADE_REGISTRY=registry.gitlab.com
+export ADE_DISABLE_NVIDIA_DOCKER=false
+export ADE_IMAGES="
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto/ade:master
+  registry.gitlab.com/autowarefoundation/autoware.auto/autowareauto:master
+  nvidia/cuda
+"
+```
+
+```bash
+cd ~/adehome/AutowareAuto
+source .aderc-nvidia
+ade start
 ```
 
 - Enter the container and start rviz2:
@@ -102,15 +143,20 @@ ade start -- --net=host --privileged # to allow connect to rosbridge
 ```bash
 ade enter
 cd ~/AutowareAuto
-colcon build    # If you want to use autoware_auto_msgs, ros2-web-bridge needs compiled them.
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/nvidia/lib64/
-source ~/AutowareAuto/install/local_setup.bash
+colcon build
+source ~/AutowareAuto/install/setup.bash
 rviz2 -d /home/"${USER}"/AutowareAuto/install/autoware_auto_examples/share/autoware_auto_examples/rviz2/autoware.rviz
 ```
 
-- Start the LGSVL Simulator by launching the executable and click on the button to open the web UI.
+- Start the LGSVL Simulator in ADE container by launching the executable and click on the button to open the web UI.
 
-- In the Vehicles tab look for `Lexus2016RXHybrid`. If not available download it from [here](https://content.lgsvlsimulator.com/vehicles/lexusrx2016/) and follow [these instructions](https://www.lgsvlsimulator.com/docs/vehicles-tab/#how-to-add-a-vehicle) to add it.
+```bash
+$ ~/AutowareAuto/lgsvl_simulator/simulator
+```
+
+- When you see Open Browser in a window, enter localhost:8080 in browser.
+
+- In the Vehicles tab look for `AWF Lexus2016 RX Hybrid`. If not available download it from [here](https://content.lgsvlsimulator.com/vehicles/lexusrx2016/) and follow [these instructions](https://www.lgsvlsimulator.com/docs/vehicles-tab/#how-to-add-a-vehicle) to add it.
     - Click on the wrench icon for the Lexus vehicle:
     - Change the bridge type to `ROS2`
     - Use the following JSON configuration [Autoware Auto JSON Example](autoware-auto-json-example.md)
@@ -122,21 +168,12 @@ rviz2 -d /home/"${USER}"/AutowareAuto/install/autoware_auto_examples/share/autow
     - Click submit
     Select the simulation and press the play button in the bottom right corner of the screen
 
-- Launch ROS2 web bridge in a new terminal:
+- Launch ROS2 LGSVL bridge in a new terminal:
 
-**NOTE** [Node.js](#node-js) will need to be reinstalled in the container every time it is started
-
-```bash
-ade enter      # ros2 web bridge should be run in ade environment.
-cd ros2-web-bridge
-source ~/AutowareAuto/install/local_setup.bash
-node bin/rosbridge.js
-```
+**NOTE*** [ROS2 LGSVL Bridge](#lgsvl-bridge-running) needs to be running.
 
 You should now be able to see the lidar point cloud in rviz (see image below).
 
 If the pointcloud is not visible make sure the Fixed Frame (under Global Options) is set to `lidar_front` and that a PointCloud2 message is added which listens on the `/lidar_front/points_raw` topic.
 
 ![](images/autoware-auto-rviz.png)
-
-

@@ -14,7 +14,7 @@
 |`/imu/imu_raw`|IMU|
 |`/lidar_front/points_raw`|LidarFront|
 |`/lidar_rear/points_raw`|LidarRear|
-|`/lgsvl/vehicle_odom`|Vehicle Odometry|
+|`/lgsvl/clock`|Simulation Clock|
 
 ### Subscribed Topics [[top]] {: #subscribed-topics data-toc-label='Subscribed Topics'}
 
@@ -24,7 +24,6 @@
 |`/lgsvl/vehicle_state_cmd`|Autoware Auto Vehicle State|
 
 ### Complete JSON Configuration [[top]] {: #complete-json-configuration data-toc-label='Complete JSON Configuration'}
-
 ```JSON
 [
   {
@@ -178,15 +177,15 @@
     }
   },
   {
-    "type": "Vehicle Odometry",
-    "name": "Vehicle Odometry Sensor",
-    "params": {
-      "Topic": "/lgsvl/vehicle_odom"
-    }
-  },
-  {
     "type": "Keyboard Control",
     "name": "Keyboard Car Control"
+  },
+  {
+    "type": "Clock",
+    "name": "Simulation Clock",
+    "params": {
+      "Topic": "/lgsvl/clock"
+    }
   }
 ]
 ```
