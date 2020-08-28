@@ -3,7 +3,7 @@
 Our `3D Ground Truth sensor` and `Signal sensor` now publish ground truth perception data to Apollo stack via CyberRT bridge or ROS Apollo bridge. The modular testing feature is useful for testing planning module of Apollo stack based on the assumption that the perception output is 100% accurate without any errors. In other words, we can completely bypass Apollo's perception modules (i.e., object detection and traffic light detection) and use ground truth labels for perception published by our simulator instead.
 
 <div class="video-container">
-    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/xxxxxxxxxx" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/781zkzN2xMg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
