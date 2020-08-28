@@ -70,6 +70,7 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 * Plugins
 	* [Sensor plugins](sensor-plugins.md)
 	* [LiDAR plugin](lidar-plugin.md)
+	* [Bridge plugins](bridge-plugins.md)
 	* [Controllable plugins](controllable-plugins.md)
 	* [Traffic behavior plugins](npc-plugins.md)
 	* [Vehicle dynamics](ego-vehicle-dynamics.md)

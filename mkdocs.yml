@@ -83,8 +83,8 @@ nav:
   - 'Setting up ROS 2 bridge': 'ros2-bridge.md'
   - 'Plugins':
     - 'Sensor plugins': 'sensor-plugins.md'
-    - 'Bridge plugins': 'bridge-plugins.md'
     - 'Lidar sensor plugin': 'lidar-plugin.md'
+    - 'Bridge plugins': 'bridge-plugins.md'
     - 'Controllable plugins': 'controllable-plugins.md'
     - 'Traffic behavior plugins': 'npc-plugins.md'
     - 'Vehicle dynamics': 'ego-vehicle-dynamics.md'
