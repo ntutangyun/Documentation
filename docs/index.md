@@ -9,20 +9,22 @@ Visit our website here: [https://www.lgsvlsimulator.com](https://www.lgsvlsimula
 Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/lgsvl/simulator)
 
 ### Quick Start
-
 * [Getting Started](getting-started.md)
 * [Keyboard Shortcuts](keyboard-shortcuts.md)
 * [Release notes](changelog.md)
-* User Interface
+* Web User Interface
 	* [Maps](maps-tab.md)
 	* [Vehicles](vehicles-tab.md)
 	* [Sensor Parameters](sensor-json-options.md)
 	* [Clusters](clusters-tab.md)
-	* [Simulations](simulations-tab.md) 
+	* [Simulations](simulations-tab.md)
+* Simulation User Interface
+    * [Menu items](simulation-menu.md)
+    * [Sensor visualization](sensor-visualizers.md)
+    * [Bridge topics](bridge-connection-ui.md)
 * [Configuration file and command line parameters](config-and-cmd-line-params.md)
 
 ### Integration with AD
-
 * Running with Autoware.AI
 	* [Instructions](autoware-instructions.md)
 	* [Sample sensor configuration](autoware-json-example.md)
@@ -45,14 +47,12 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 		* [Sample sensor configuration for data collection](ground-truth-json-example.md)
 
 ### Python API
-
 * [Python API guide](python-api.md)
 * [Python API quickstart examples](api-quickstart-descriptions.md)
 * [Python API use case examples](api-example-descriptions.md)
 * [How to run a scenario](api-how-to-run-scenario.md)
 
 ### Tutorials
-
 * [Reinforcement learning with OpenAI Gym](openai-gym.md)
 * [Deep learning lane following model](lane-following.md)
 * [How to create a simple ROS2-based AD stack with LGSVL Simulator](create-ros2-ad-stack.md)
@@ -75,7 +75,8 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 	* [Vehicle dynamics](ego-vehicle-dynamics.md)
 * Point cloud
 	* [Point cloud import](pointcloud-import.md)
-	* [Point cloud rendering](pointcloud-rendering.md) 
+	* [Point cloud rendering](pointcloud-rendering.md)
+* [Unity help](unity-help.md)
 
 ### Support
 * [Troubleshooting](troubleshooting.md)

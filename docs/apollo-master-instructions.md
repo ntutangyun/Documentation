@@ -155,10 +155,3 @@ Only HD map files for Borregas Ave is included in the the latest Apollo at this 
 You can also download additional maps from [here](https://github.com/lgsvl/apollo-5.0/tree/simulator/modules/map/data), and manually add them to `/apollo/modules/map/data/`. 
 
 Or you can export your own map from our [map annotation tool](https://www.lgsvlsimulator.com/docs/map-annotation/#export-map-annotations), name it `base_map.bin` and then generate `routing_map` and `sim_map` following [these instructions](https://github.com/ApolloAuto/apollo/tree/master/modules/map/data#difference-between-base_map-routing_map-and-sim_map).
-
-
-##  Copyright and License [[top]] {: #copyright-and-license data-toc-label='Copyright and License'}
-
-Copyright (c) 2020 LG Electronics, Inc.
-
-This software contains code licensed as described in LICENSE.
