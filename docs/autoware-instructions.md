@@ -2,12 +2,15 @@
 
 **The software and source code in this repository are intended only for use with the LGSVL simulator and *should not* be used in a real vehicle.**
 
-[![](images/autoware-sim.png)](images/full_size_images/autoware-sim.png)
-
 <h2>Table of Contents</h2>
 [TOC]
 
 ## General [[top]] {: #general data-toc-label='General'}
+
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/C4ngQWUseJI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<br>
 
 This guide goes through how to run Autoware.AI with the LGSVL simulator.
 
