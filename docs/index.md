@@ -78,5 +78,6 @@ Visit our Github here: [https://github.com/lgsvl/simulator](https://github.com/l
 	* [Point cloud rendering](pointcloud-rendering.md) 
 
 ### Support
+* [Troubleshooting](troubleshooting.md)
 * [Frequently Asked Questions](faq.md)
 * [Contributing](contributing.md)
