@@ -30,10 +30,11 @@ It contains tools to change the environment of the Simulation while the Simulati
 
 ## Sensors Menu [[top]] {: #sensors-menu data-toc-label='Sensors Menu'}
 This menu is accessed from the "eye" button. 
-It lists all sensors on the selected vehicle and allows for the sensors to be visualized. 
+It lists all sensors on the selected vehicle and allows for the sensors to be visualized, as well as their coordinate transform relative to the parent [transform sensor](sensor-json-options.md#transform-sensor).
 See [Sensor Visualization](sensor-visualizers.md) for more details.
 
-[![](images/visualizer-menu.png)](images/full_size_images/visualizer-menu.png)
+[![](images/simulation-menu-tf-visualize.png)](images/full_size_images/simulation-menu-tf-visualize.png)
+
 
 ## Bridge Menu [[top]] {: #bridge-menu data-toc-label='Bridge Menu'}
 This menu is accessed from the "plug" button. 

@@ -10,8 +10,17 @@ Not all sensors have visualizations available, only sensors who have will show t
 <h2>Table of Contents</h2>
 [TOC]
 
+## Transform Visualization [[top]] {: #transform-visualization data-toc-label='Transform Visualization'}
+
+For each sensor, you can click the "coordinate" icon next to the sensor name to turn on the visualization of the sensor's transform. This transform is shown relative to the parent [transform sensor](sensor-json-options.md#transform-sensor), if present (base_link).
+
+<div class="video-container">
+    <iframe style="display:block;margin:auto;" width="696" height="391" src="https://www.youtube.com/embed/Q00B7vqtwrE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<br>
 
 ## Cameras [[top]] {: #cameras data-toc-label='Cameras'}
+
 When a camera is visualized, the image the sensor see is visualized in a window. 
 This window can be resized by clicking-and-dragging the icon in the bottom right corner and can be made full-screen with the box icon in the top right corner. 
 The window can be moved by clicking-and-dragging the top bar. To close the window, either click the `X` or click the "eye" again.
