@@ -668,18 +668,20 @@ collision with. It corressponds to layers in the Unity project - check the proje
 
 ## Changelog [[top]] {: #changelog data-toc-label='Changelog'}
 
+* 2020-08-28
+      * Added support for time-to-collision and distance-to-collision triggers for NPCs and pedestrians
+* 2020-05-22
+      * Added suport for setting pedestrian travel speed
 * 2020-01-30
-        * Extended controllable objects to support plugins - see [controllable plugins](controllable-plugins.md)
+      * Extended controllable objects to support plugins - see [controllable plugins](controllable-plugins.md)
 
 * 2019-09-05
-        * Extended `DriveWaypoint` to support angle, idle time and trigger distance
-        * Added controllable objects - use `Simulator.get_controllables`
+      * Extended `DriveWaypoint` to support angle, idle time and trigger distance
+      * Added controllable objects - use `Simulator.get_controllables`
 
 * 2019-08-12
-	* Added `time_scale` argument to run function for running simulation in non-realtime
-	* Added `seed` argument to `Simulator.load` for deterministic NPCs
+      * Added `time_scale` argument to run function for running simulation in non-realtime
+      * Added `seed` argument to `Simulator.load` for deterministic NPCs
 
 * 2019-04-19
-	* initial release
-
-
+      * initial release

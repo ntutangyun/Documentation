@@ -33,4 +33,8 @@ This document describes the example Python scripts that use the LGSVL Simulator 
 * [27-control-traffic-lights.py](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/27-control-traffic-lights.py): How to get and set the control policy of a controllable object (e.g., changing a traffic light signal)
 * [28-control-traffic-cone.py](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/28-control-traffic-cone.py): How to add and move a controllable object (e.g. a traffic cone)
 * [29-add-random-agents.py](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/29-add-random-agents.py): How to use random npcs and pedestrians in a simulation
+* [30-time-to-collision-trigger](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/30-time-to-collision-trigger.py) How to use time-to-collision triggers
+* [31-wait-for-distance-trigger](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/31-wait-for-distance-trigger.py) How to use distance-to-collision triggers
+* [32-pedestrian-time-to-collision](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/32-pedestrian-time-to-collision.py) How to use time-to-collision on pedestrians
+* [98-npc-behavior](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/98-npc-behaviour.py) How to get and set available NPC behaviors
 * [99-utils-examples.py](https://github.com/lgsvl/PythonAPI/blob/master/quickstart/99-utils-examples.py): How to use several of the utility scripts to transform an arbitrary point to the coordinate system of a local transform (relative to sensor)
