@@ -1,6 +1,27 @@
 # Changelog
 All notable changes and release notes for LGSVL Simulator will be documented in this file.
 
+## [2020.06] - 2020-08-31
+
+### Added
+ - Support [modular testing](modular-testing.md) of planning with Apollo 5.0
+ - Bridge plugin system with example ([LoggingBridge](https://github.com/lgsvl/LoggingBridge))
+ - Added default [ultrasonic distance sensor](sensor-json-options.md#ultrasonic)
+ - Sensor TF visualizer in [sensor visualizations](sensor-visualizers.md)
+ - Added button in [map annotation tool](map-annotation.md) to add synthetic lane boundary lines automatically
+ - Python API: added callback agents_traversed_waypoints
+ - Python API: added ability to set speed at WalkWaypoints
+ - Python API: Added waypoint trigger system
+
+### Changed
+ - Fixed 90 degree orientation offset in GPS odometry sensor
+ - Replaced default ROS2 bridge to improved [custom ROS2 bridge](ros2-bridge.md) instead of ros2-web-bridge
+ - Unity update to 2019.3.15f1
+ - Fixed timestamps in GPS, IMU
+ - Added timestamp to default LiDAR sensor PointCloud message
+ - Fixed bugs in OpenDrive map importer to correctly compute reference lines and lane widths for edge cases
+ - Improved OpenDrive map exporter to export parametric cubic curves instead of simple lines for each reference line segment
+
 ## [2020.05] - 2020-06-02
 
 ### Added
