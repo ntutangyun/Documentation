@@ -84,7 +84,7 @@ lgsvl_bridge
 ### Install ROS2 LGSVL Messages [[top]] {: #install-ros2-lgsvl-messages data-toc-label='Install ROS2 LGSVL Messages'}
 ###### Downloading
 ```bash
-mkdir mkdir -p ~/adehome/AutowareAuto/src/external/lgsvl_msgs
+mkdir -p ~/adehome/AutowareAuto/src/external/lgsvl_msgs
 cd ~/adehome/AutowareAuto/src/external/lgsvl_msg
 git clone https://github.com/lgsvl/lgsvl_msgs.git
 ```
