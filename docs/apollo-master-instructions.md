@@ -33,7 +33,7 @@ This is the checklist for Apollo installation:
 - ✅ Installed Docker & post-installation steps
 - ✅ Installed `nvidia-container-toolkit` or `nvidia-container-runtime`
 - ✅ Cloned Apollo master branch
-- ✅ Able to run `bash docker/scripts/dev_start.sh` in Apollo folder
+- ✅ Able to start Apollo docker container `bash docker/scripts/dev_start.sh`
 - ✅ Able to enter docker container by `bash docker/scripts/dev_start.sh`
 - ✅ Able to build Apollo in optimized GPU mode in Apollo container: `bash apollo.sh build_opt_gpu`
 
