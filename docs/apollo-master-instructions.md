@@ -15,97 +15,44 @@ Big changes have recently been introduced in Apollo master; camera perception ma
 The guide outlines the steps required to setup Apollo for use with the LGSVL Simulator. If you have not already set up the simulator, please do so first by following the instructions [here](https://github.com/lgsvl/simulator).
 
 ## Prerequisites [[top]] {: #prerequisites data-toc-label='Prerequisites'}
-* Ubuntu 16.04 or later (Ubuntu 18.04 is preferred)
+* Ubuntu 18.04 or later
 * Nvidia graphics card (required for Perception)
-    - Nvidia proprietary driver (\>=410.48) must be installed
+    - Nvidia proprietary driver (\>=440.33.01) must be installed
+* Docker-CE 19.03 or later
+* `nvidia-container-runtime`
+* `libvulkan1`
 
 ## Setup [[top]] {: #setup data-toc-label='Setup'}
 
-### Docker [[top]] {: #docker data-toc-label='Docker'}
-Apollo is designed to run out of docker containers. The image will mount this repository as a volume so the image will not need to be rebuilt each time a modification is made.
+### Apollo [[top]] {: #docker data-toc-label='Apollo'}
+To install and setup Apollo and its dependencies, follow instructions [here](https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md).
 
-#### Installing Docker CE [[top]] {: #installing-docker-ce data-toc-label='Installing Docker CE'}
-To install Docker CE please refer to the [official documentation](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+This is the checklist for Apollo installation:
 
-**NOTE** 
-Apollo does not work if the docker is started with `sudo`.
-We suggest following through with the [post installation steps](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
-
-
-#### Installing Nvidia Docker [[top]] {: #installing-nvidia-docker data-toc-label='Installing Nvidia Docker'}
-Before installing nvidia-docker make sure that you have an appropriate Nvidia driver installed.
-To test if nvidia drivers are properly installed enter `nvidia-smi` in a terminal. If the drivers are installed properly an output similar to the following should appear.
-
-```
-	+-----------------------------------------------------------------------------+
-    | NVIDIA-SMI 440.64       Driver Version: 440.64       CUDA Version: 10.2     |
-    |-------------------------------+----------------------+----------------------+
-    | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-    | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-    |===============================+======================+======================|
-    |   0  GeForce GTX 1080    Off  | 00000000:01:00.0  On |                  N/A |
-    | 27%   29C    P8     7W / 180W |    579MiB /  8117MiB |      1%      Default |
-    +-------------------------------+----------------------+----------------------+
-                                                                                   
-    +-----------------------------------------------------------------------------+    
-    | Processes:                                                       GPU Memory |
-    |  GPU       PID   Type   Process name                             Usage      |
-    |=============================================================================|
-    |    0      1745      G   /usr/lib/xorg/Xorg                            40MiB |
-    |    0      1862      G   /usr/bin/gnome-shell                          49MiB |
-    |    0      4409      G   /usr/lib/xorg/Xorg                           223MiB |
-    |    0      4545      G   /usr/bin/gnome-shell                         140MiB |
-    |    0      4962      G   ...uest-channel-token=10798087356903621100    27MiB |
-    |    0      9570      G   /proc/self/exe                                50MiB |
-    |    0     17619      G   ...uest-channel-token=14399957398263092148    40MiB |
-    +-----------------------------------------------------------------------------+
-```
-
-The installation steps for nvidia-docker are available at the [official repo](https://github.com/NVIDIA/nvidia-docker). 
-
-### Cloning the Repository [[top]] {: #cloning-the-repository data-toc-label='Cloning the Repository'}
-Clone latest Apollo using the following command:
-
-```bash
-git clone https://github.com/ApolloAuto/apollo
-```
-
-### Building Apollo and bridge [[top]] {: #building-apollo-and-bridge data-toc-label='Building Apollo and bridge'}
-Now everything should be in place to build Apollo. Apollo must be built from the container. To launch the container navigate to the directory where the repository was cloned and enter:
-
-```bash
-./docker/scripts/dev_start.sh
-```
-
-This should launch the container and mount a few volumes. It could take a few minutes to pull the latest volumes on the first run.
-
-To get into the container:
-
-```bash
-./docker/scripts/dev_into.sh
-```
-
-Build Apollo (optimized, not debug, with GPU support):
-
-```bash
-./apollo.sh build_opt_gpu
-```
+- ✅ Installed Nvidia GPU driver
+- ✅ Installed Docker & post-installation steps
+- ✅ Installed `nvidia-container-toolkit` or `nvidia-container-runtime`
+- ✅ Cloned Apollo master branch
+- ✅ Able to run `bash docker/scripts/dev_start.sh` in Apollo folder
+- ✅ Able to enter docker container by `bash docker/scripts/dev_start.sh`
+- ✅ Able to build Apollo in optimized GPU mode in Apollo container: `bash apollo.sh build_opt_gpu`
 
 **NOTE**
 The Apollo build may fail on machines with less than 1GB of RAM per CPU core due to aggressive parallelization in the build, as discussed in [Apollo issue 7719](https://github.com/ApolloAuto/apollo/issues/7719).
 
 If the build fails, either re-start it until it succeeds, but if it continues to fail (especially when running the linker) then you'll need to address the low memory situation by either adding more memory to your build machine or enabling or [increasing available swap space](https://bogdancornianu.com/change-swap-size-in-ubuntu/). If your Apollo build is crashing on a 16GB machine with little or no swap, try setting it to 16GB.
 
-
 ## Launching Apollo alongside the Simulator [[top]] {: #launching-apollo-alongide-the-simulator data-toc-label='Launching Apollo alongisde the Simulator'}
 
 [![](images/xe-simulator.png)](images/full_size_images/xe-simulator.png)
 
-Here we only describe only a simple case of driving from point A to point B using Apollo and the simulator. 
+Here we describe only a simple case of driving from point A to point B using Apollo and the simulator. 
 
-To launch apollo, first launch and enter a container as described in the previous steps.
+To launch apollo: 
 
-* To start Apollo:
+* Launch and enter Apollo container using `dev_start.sh` and `dev_into.sh`.
+
+* Start Apollo Dreamview (inside docker container): 
 
     Note: you may receive errors about dreamview not being build if you do not run the script from the `/apollo` directory.
 
